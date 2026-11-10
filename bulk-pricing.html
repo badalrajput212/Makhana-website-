@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Live wholesale makhana prices from major Bihar districts — 5kg bulk rates updated in real time. Roots 2 Retails bulk supplier.">
+  <title>Bihar Makhana Live Rates — NayaVayapar</title>
+  <link rel="icon" type="image/png" href="assets/logo-nayavayapar.png">
+  <link rel="apple-touch-icon" href="assets/logo-nayavayapar.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ===================================================
+       CSS VARIABLES — Match main site palette
+       =================================================== */
+    :root {
+      --forest:       #163A2D;
+      --forest-dark:  #0E261E;
+      --forest-light: #235241;
+      --cream:        #F7F1E5;
+      --cream-soft:   #FAF6EF;
+      --cream-deep:   #EFE6D5;
+      --gold:         #C9A45C;
+      --gold-light:   #DFC07D;
+      --gold-dark:    #9F7B33;
+      --white:        #FFFFFF;
+      --muted:        #6B7280;
+      --border:       rgba(22,58,45,0.10);
+      --font-serif:   'Playfair Display', Georgia, serif;
+      --font-sans:    'Plus Jakarta Sans', system-ui, sans-serif;
+      --shadow-md:    0 8px 32px rgba(22,58,45,0.12), 0 2px 8px rgba(22,58,45,0.06);
+      --radius:       20px;
+      --transition:   0.28s cubic-bezier(0.23,1,0.32,1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--cream-soft);
+      color: var(--forest);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ===================================================
+       NAVBAR
+       =================================================== */
+    .lp-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(247,241,229,0.96);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--forest);
+      text-decoration: none;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 50px;
+      padding: 8px 16px;
+      transition: all var(--transition);
+    }
+    .back-btn:hover { background: var(--forest); color: var(--gold-light); border-color: var(--forest); }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-brand img { height: 38px; width: auto; }
+    .nav-brand-text {
+      font-family: var(--font-serif);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--forest);
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .wa-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--white);
+      background: #25D366;
+      border-radius: 50px;
+      padding: 9px 18px;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+    .wa-btn:hover { background: #1ebe58; transform: translateY(-1px); }
+
+    /* ===================================================
+       LIVE TICKER BAR
+       =================================================== */
+    .ticker-bar {
+      background: var(--forest);
+      color: var(--gold-light);
+      height: 38px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .ticker-label {
+      background: var(--gold);
+      color: var(--forest-dark);
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0 16px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      z-index: 2;
+    }
+    .live-dot {
+      width: 7px; height: 7px;
+      background: var(--forest-dark);
+      border-radius: 50%;
+      animation: pulse-dot 1.4s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+    .ticker-track {
+      display: flex;
+      gap: 0;
+      animation: ticker-scroll 28s linear infinite;
+      white-space: nowrap;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+    .ticker-item {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 0 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-right: 1px solid rgba(255,255,255,0.15);
+    }
+    .ticker-price { font-weight: 800; color: var(--gold-light); }
+    .tick-up   { color: #4ade80; font-size: 11px; }
+    .tick-down { color: #f87171; font-size: 11px; }
+    @keyframes ticker-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ===================================================
+       HERO
+       =================================================== */
+    .lp-hero {
+      background: linear-gradient(135deg, var(--forest-dark) 0%, var(--forest) 60%, var(--forest-light) 100%);
+      padding: 64px 40px 72px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .lp-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 20% 80%, rgba(201,164,92,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 50% at 80% 20%, rgba(201,164,92,0.08) 0%, transparent 70%);
+    }
+    .hero-kicker {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.24em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.15;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .hero-title em {
+      color: var(--gold-light);
+      font-style: italic;
+    }
+    .hero-subtitle {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      color: rgba(247,241,229,0.70);
+      line-height: 1.65;
+      max-width: 560px;
+      margin: 0 auto 28px;
+      position: relative;
+    }
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,164,92,0.15);
+      border: 1.5px solid rgba(201,164,92,0.40);
+      border-radius: 50px;
+      padding: 8px 18px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gold-light);
+      letter-spacing: 0.06em;
+      position: relative;
+    }
+    .live-badge-dot {
+      width: 8px; height: 8px;
+      background: #4ade80;
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(74,222,128,0.5);
+      animation: live-pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes live-pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(74,222,128,0.5); }
+      70%  { box-shadow: 0 0 0 8px rgba(74,222,128,0); }
+      100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
+    }
+    .last-updated {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      color: rgba(247,241,229,0.45);
+      margin-top: 10px;
+      position: relative;
+    }
+
+    /* ===================================================
+       MAIN LAYOUT — Map + Cards
+       =================================================== */
+    .lp-main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 56px 40px 80px;
+    }
+
+    .map-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    /* ===================================================
+       BIHAR SVG MAP
+       =================================================== */
+    .map-panel {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+      box-shadow: var(--shadow-md);
+      padding: 28px;
+      position: sticky;
+      top: 120px;
+    }
+    .map-panel-header {
+      margin-bottom: 20px;
+    }
+    .map-panel-kicker {
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      color: var(--gold-dark);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .map-panel-title {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--forest);
+    }
+
+    .bihar-svg-wrap {
+      position: relative;
+      width: 100%;
+    }
+    .bihar-svg-wrap svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* District dots */
+    .d-district {
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .d-dot {
+      transition: all 0.25s ease;
+    }
+    .d-district:hover .d-dot,
+    .d-district.active .d-dot {
+      r: 11;
+      fill: var(--gold);
+    }
+    .d-ring {
+      fill: none;
+      stroke: var(--gold);
+      stroke-width: 1.5;
+      opacity: 0;
+      animation: ring-pulse 2s ease-out infinite;
+    }
+    .d-district:hover .d-ring,
+    .d-district.active .d-ring { opacity: 1; }
+
+    @keyframes ring-pulse {
+      0%   { r: 8; opacity: 0.8; }
+      100% { r: 22; opacity: 0; }
+    }
+
+    .d-label {
+      font-family: var(--font-sans);
+      font-size: 9px;
+      font-weight: 700;
+      fill: var(--forest-dark);
+      text-anchor: middle;
+      pointer-events: none;
+      letter-spacing: 0.04em;
+    }
+
+    /* Map tooltip */
+    .map-tooltip {
+      position: absolute;
+      background: var(--forest);
+      color: var(--cream);
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      z-index: 10;
+      white-space: nowrap;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      min-width: 160px;
+    }
+    .map-tooltip.visible { opacity: 1; }
+    .map-tooltip-name { font-weight: 800; font-size: 13px; color: var(--gold-light); margin-bottom: 4px; }
+    .map-tooltip-price { font-weight: 700; color: var(--cream); }
+    .map-tooltip-grade { font-size: 10px; color: rgba(247,241,229,0.65); margin-top: 2px; }
+
+    /* Legend */
+    .map-legend {
+      display: flex;
+      gap: 16px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .legend-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+
+    /* ===================================================
+       PRICE CARDS PANEL
+       =================================================== */
+    .cards-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .cards-panel-header {
+      margin-bottom: 20px;
+    }
+    .cards-panel-kicker {
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      color: var(--gold-dark);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .cards-panel-title {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--forest);
+    }
+    .cards-panel-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .price-cards-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .price-card {
+      background: var(--white);
+      border-radius: 16px;
+      border: 1.5px solid var(--border);
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .price-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: var(--forest);
+      border-radius: 4px 0 0 4px;
+      transform: scaleY(0);
+      transition: transform var(--transition);
+    }
+    .price-card:hover::before,
+    .price-card.active::before { transform: scaleY(1); }
+    .price-card:hover,
+    .price-card.active {
+      border-color: rgba(22,58,45,0.25);
+      box-shadow: 0 4px 20px rgba(22,58,45,0.10);
+      transform: translateX(4px);
+    }
+
+    .pc-rank {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--cream-deep);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--forest);
+      flex-shrink: 0;
+    }
+    .price-card.active .pc-rank,
+    .price-card:hover .pc-rank {
+      background: var(--forest);
+      color: var(--gold-light);
+    }
+
+    .pc-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .pc-district {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--forest);
+      line-height: 1.2;
+    }
+    .pc-sub {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .pc-price-block {
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .pc-price {
+      font-family: var(--font-sans);
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--forest);
+      line-height: 1;
+      transition: color 0.4s ease;
+    }
+    .pc-price.flash-up   { color: #16a34a; }
+    .pc-price.flash-down { color: #dc2626; }
+    .pc-unit {
+      font-family: var(--font-sans);
+      font-size: 10px;
+      color: var(--muted);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+    .pc-change {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      padding: 2px 7px;
+      border-radius: 50px;
+      margin-top: 4px;
+    }
+    .pc-change.up   { color: #16a34a; background: rgba(22,163,74,0.10); }
+    .pc-change.down { color: #dc2626; background: rgba(220,38,38,0.10); }
+    .pc-change.flat { color: var(--muted); background: rgba(107,114,128,0.10); }
+
+    /* ===================================================
+       GRADE INFO SECTION (6-SUTA, 5-SUTA & 4-SUTA GUIDE)
+       =================================================== */
+    .grade-section {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+      box-shadow: var(--shadow-md);
+      padding: 44px 38px;
+      margin-top: 48px;
+    }
+    .grade-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .grade-kicker {
+      font-size: 11px; font-weight: 900; letter-spacing: 0.22em;
+      color: var(--gold-dark); text-transform: uppercase; margin-bottom: 8px;
+    }
+    .grade-title {
+      font-family: var(--font-serif);
+      font-size: 28px; font-weight: 700; color: var(--forest);
+      line-height: 1.25;
+    }
+    .grade-sub {
+      font-size: 13.5px;
+      color: var(--muted);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    /* Suta Concept Educational Banner */
+    .suta-concept-banner {
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      gap: 24px;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(22,58,45,0.04) 0%, rgba(201,164,92,0.14) 100%);
+      border: 1.5px dashed rgba(201,164,92,0.60);
+      border-radius: 18px;
+      padding: 22px 26px;
+      margin-bottom: 36px;
+    }
+    .scb-formula-box {
+      background: var(--forest);
+      color: var(--cream);
+      border-radius: 14px;
+      padding: 16px 18px;
+      text-align: center;
+    }
+    .scb-badge {
+      font-size: 9.5px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      color: var(--gold);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .scb-math-big {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--cream);
+      display: block;
+    }
+    .scb-math-sub {
+      font-size: 12px;
+      color: rgba(247,241,229,0.85);
+      font-weight: 600;
+      display: block;
+      margin-top: 3px;
+    }
+    .scb-sieve-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--gold-light);
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .scb-text-box {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .scb-title {
+      font-family: var(--font-serif);
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--forest);
+    }
+    .scb-desc {
+      font-size: 13.5px;
+      color: #374151;
+      line-height: 1.6;
+    }
+
+    /* Grade Cards Grid */
+    .grade-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-bottom: 36px;
+    }
+    .grade-card {
+      position: relative;
+      background: var(--cream-soft);
+      border-radius: 18px;
+      padding: 26px 20px 22px;
+      border: 1.5px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      transition: all var(--transition);
+    }
+    .grade-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(22,58,45,0.12);
+      border-color: var(--gold);
+    }
+    .grade-card--featured {
+      background: #FFFFFF;
+      border-color: var(--gold);
+      box-shadow: 0 8px 28px rgba(201,164,92,0.22);
+    }
+    .grade-featured-pill {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--forest);
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      padding: 3px 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(201,164,92,0.4);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .grade-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 50px;
+      margin-bottom: 12px;
+      align-self: center;
+    }
+    .grade-badge-jumbo {
+      background: rgba(201,164,92,0.20);
+      color: #8A641A;
+      border: 1px solid rgba(201,164,92,0.40);
+    }
+    .grade-badge-select {
+      background: rgba(22,58,45,0.12);
+      color: var(--forest);
+      border: 1px solid rgba(22,58,45,0.25);
+    }
+    .grade-badge-standard {
+      background: rgba(107,114,128,0.12);
+      color: #374151;
+      border: 1px solid rgba(107,114,128,0.25);
+    }
+
+    /* Pearl Visual Sizing Circles */
+    .grade-visual-pearl {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px 0 16px;
+    }
+    .pearl-circle {
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-family: var(--font-serif);
+      box-shadow: inset 0 -4px 8px rgba(0,0,0,0.06), 0 6px 20px rgba(22,58,45,0.08);
+      background: linear-gradient(135deg, #ffffff 0%, #FAF6EF 100%);
+    }
+    .pearl-6suta {
+      width: 66px;
+      height: 66px;
+      border: 3.5px solid #C9A45C;
+      color: #163A2D;
+      font-size: 20px;
+    }
+    .pearl-5suta {
+      width: 54px;
+      height: 54px;
+      border: 3px solid #235241;
+      color: #163A2D;
+      font-size: 17px;
+    }
+    .pearl-4suta {
+      width: 44px;
+      height: 44px;
+      border: 2.5px solid #6B7280;
+      color: #163A2D;
+      font-size: 14px;
+    }
+    .pearl-mm-tag {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--forest);
+      background: rgba(22,58,45,0.06);
+      padding: 2px 10px;
+      border-radius: 12px;
+      margin-top: 8px;
+    }
+
+    .grade-name {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--forest);
+      line-height: 1.25;
+      margin-bottom: 2px;
+    }
+    .grade-hindi {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold-dark);
+      margin-bottom: 12px;
+    }
+    .grade-price-block {
+      margin-bottom: 14px;
+    }
+    .grade-price-range {
+      font-family: var(--font-sans);
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--forest);
+    }
+    .grade-per-5kg {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* Specifications list inside card */
+    .grade-specs-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 12px 0 16px;
+      padding: 12px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      font-size: 12px;
+      text-align: left;
+    }
+    .g-spec-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .g-spec-label {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .g-spec-val {
+      color: var(--forest);
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    /* Best for section inside card */
+    .grade-best-for {
+      background: rgba(22,58,45,0.04);
+      border-radius: 12px;
+      padding: 12px 14px;
+      text-align: left;
+      font-size: 11.5px;
+      color: #374151;
+      line-height: 1.5;
+      margin-top: auto;
+    }
+    .g-best-title {
+      display: block;
+      font-weight: 700;
+      color: var(--forest);
+      font-size: 11.5px;
+      margin-bottom: 4px;
+    }
+
+    /* Comparison Table Styling */
+    .suta-table-card {
+      background: var(--cream-soft);
+      border-radius: 18px;
+      padding: 28px 24px;
+      border: 1.5px solid var(--border);
+      margin-bottom: 32px;
+    }
+    .suta-table-head {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .suta-table-title {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--forest);
+    }
+    .suta-table-subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 4px;
+      display: block;
+    }
+    .suta-table-wrap {
+      overflow-x: auto;
+      border-radius: 12px;
+      background: var(--white);
+      border: 1px solid var(--border);
+    }
+    .suta-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      text-align: left;
+      min-width: 600px;
+    }
+    .suta-table th, .suta-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(22,58,45,0.08);
+    }
+    .suta-table thead th {
+      background: rgba(22,58,45,0.06);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .suta-table .th-jumbo { color: #8A641A; }
+    .suta-table .th-select { color: var(--forest); }
+    .suta-table .th-standard { color: #4B5563; }
+    .suta-table tbody tr:last-child td { border-bottom: none; }
+    .suta-table tbody tr:hover td { background: rgba(22,58,45,0.02); }
+    .tag-cell {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 11px;
+    }
+    .tag-jumbo { background: rgba(201,164,92,0.20); color: #8A641A; }
+    .tag-select { background: rgba(22,58,45,0.12); color: #163A2D; }
+    .tag-standard { background: rgba(107,114,128,0.12); color: #374151; }
+
+    /* Buyer Advisory Callout Box */
+    .suta-buyer-tip {
+      background: linear-gradient(135deg, var(--forest-dark) 0%, var(--forest) 100%);
+      color: var(--cream);
+      border-radius: 16px;
+      padding: 24px 26px;
+      border: 1px solid rgba(201,164,92,0.30);
+    }
+    .sbt-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .sbt-icon {
+      font-size: 26px;
+      flex-shrink: 0;
+    }
+    .sbt-title {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin: 0;
+      line-height: 1.25;
+    }
+    .sbt-sub {
+      font-size: 12px;
+      color: rgba(247,241,229,0.82);
+    }
+    .sbt-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .sbt-col {
+      background: rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 12px;
+      line-height: 1.5;
+      color: rgba(247,241,229,0.92);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .sbt-col strong {
+      color: var(--gold-light);
+    }
+    .sbt-col-tag {
+      font-size: 9.5px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    /* ===================================================
+       ENQUIRY STRIP
+       =================================================== */
+    .enquiry-strip {
+      background: linear-gradient(135deg, var(--forest) 0%, var(--forest-light) 100%);
+      border-radius: var(--radius);
+      padding: 48px 40px;
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .eq-text h2 {
+      font-family: var(--font-serif);
+      font-size: 30px; font-weight: 700;
+      color: var(--cream); line-height: 1.25;
+      margin-bottom: 10px;
+    }
+    .eq-text h2 em { color: var(--gold-light); font-style: italic; }
+    .eq-text p {
+      font-size: 14px; color: rgba(247,241,229,0.70); line-height: 1.65;
+    }
+    .eq-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .eq-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-family: var(--font-sans);
+      font-size: 14px; font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 50px;
+      padding: 16px 28px;
+      transition: all var(--transition);
+    }
+    .eq-btn-primary {
+      background: var(--gold);
+      color: var(--forest-dark);
+    }
+    .eq-btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201,164,92,0.40);
+    }
+    .eq-btn-secondary {
+      background: rgba(255,255,255,0.12);
+      color: var(--cream);
+      border: 1.5px solid rgba(255,255,255,0.22);
+    }
+    .eq-btn-secondary:hover {
+      background: rgba(255,255,255,0.20);
+      transform: translateY(-2px);
+    }
+
+    /* ===================================================
+       DISCLAIMER
+       =================================================== */
+    .disclaimer {
+      background: rgba(22,58,45,0.05);
+      border: 1px solid rgba(22,58,45,0.10);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-top: 32px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .disclaimer svg { flex-shrink: 0; margin-top: 1px; color: var(--gold-dark); }
+    .disclaimer p {
+      font-family: var(--font-sans);
+      font-size: 12px; color: var(--muted); line-height: 1.6;
+    }
+    .disclaimer strong { color: var(--forest); }
+
+    /* ===================================================
+       FOOTER
+       =================================================== */
+    .lp-footer {
+      background: var(--forest-dark);
+      color: rgba(247,241,229,0.65);
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      flex-wrap: wrap;
+    }
+    .lp-footer a { color: var(--gold-light); text-decoration: none; }
+
+    /* ===================================================
+       RESPONSIVE
+       =================================================== */
+    @media (max-width: 1023px) {
+      .map-cards-grid { grid-template-columns: 1fr; }
+      .map-panel { position: static; }
+      .enquiry-strip { grid-template-columns: 1fr; }
+      .grade-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 767px) {
+      .lp-nav { padding: 0 16px; }
+      .lp-main { padding: 36px 16px 60px; }
+      .lp-hero { padding: 48px 20px 56px; }
+      .grade-grid { grid-template-columns: 1fr; }
+      .enquiry-strip { padding: 28px 20px; gap: 24px; }
+      .map-panel { padding: 20px; }
+      .nav-brand-text { display: none; }
+    }
+    @media (max-width: 480px) {
+      .ticker-item { padding: 0 14px; font-size: 11px; }
+      .price-card { padding: 14px 16px; }
+      .pc-price { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- NAVBAR                                         -->
+  <!-- ══════════════════════════════════════════════ -->
+  <nav class="lp-nav">
+    <div class="nav-left">
+      <a href="index.html" class="back-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        Back to Products
+      </a>
+      <a href="index.html" class="nav-brand">
+        <img src="assets/logo-nayavayapar.png" alt="NayaVayapar" onerror="this.style.display='none'">
+        <span class="nav-brand-text">NayaVayapar</span>
+      </a>
+    </div>
+    <div class="nav-right">
+      <a href="https://wa.me/916205846653" target="_blank" class="wa-btn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        +91 62058 46653
+      </a>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- LIVE TICKER                                     -->
+  <!-- ══════════════════════════════════════════════ -->
+  <div class="ticker-bar">
+    <div class="ticker-label">
+      <div class="live-dot"></div>
+      LIVE RATES
+    </div>
+    <div style="overflow:hidden;flex:1;display:flex;">
+      <div class="ticker-track" id="tickerTrack">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- HERO                                           -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section class="lp-hero">
+    <div class="hero-kicker">Bihar Makhana Market</div>
+    <h1 class="hero-title">
+      District-Wise <em>Live</em> Makhana<br>Wholesale Rates
+    </h1>
+    <p class="hero-subtitle">
+      Real-time indicative wholesale prices of Grade A Jumbo Makhana (per 5 kg) from major makhana-producing districts of Mithila, Bihar. Prices updated every 30 seconds.
+    </p>
+    <div class="live-badge">
+      <div class="live-badge-dot"></div>
+      LIVE — Rates updating every 30 seconds
+    </div>
+    <div class="last-updated" id="lastUpdated">Last updated: —</div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- MAIN CONTENT                                   -->
+  <!-- ══════════════════════════════════════════════ -->
+  <main class="lp-main">
+    <div class="map-cards-grid">
+
+      <!-- ════ BIHAR SVG MAP ════ -->
+      <div class="map-panel">
+        <div class="map-panel-header">
+          <div class="map-panel-kicker">Interactive Map</div>
+          <div class="map-panel-title">Bihar — Makhana Belt</div>
+        </div>
+        <div class="bihar-svg-wrap" id="mapWrap">
+          <svg viewBox="0 0 680 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bihar district map showing makhana producing areas">
+
+            <!-- ── Bihar State Outline ── -->
+            <defs>
+              <linearGradient id="biharGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%"   stop-color="#d1e8da"/>
+                <stop offset="100%" stop-color="#b8dcc6"/>
+              </linearGradient>
+              <filter id="mapShadow">
+                <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(22,58,45,0.15)"/>
+              </filter>
+            </defs>
+
+            <!-- Bihar outline (simplified realistic shape) -->
+            <path
+              d="M 62,362
+                 L 44,310 L 48,268 L 55,230 L 72,196
+                 L 100,168 L 132,148 L 162,130 L 192,112
+                 L 222,98  L 254,84  L 286,72  L 318,62
+                 L 352,55  L 386,52  L 418,54  L 448,58
+                 L 476,66  L 504,78  L 528,95  L 552,114
+                 L 572,136 L 588,158 L 600,182 L 610,208
+                 L 616,235 L 616,260 L 610,285 L 598,306
+                 L 580,324 L 558,340 L 530,354 L 500,366
+                 L 466,376 L 430,384 L 392,390 L 354,393
+                 L 316,392 L 278,387 L 240,378 L 204,365
+                 L 170,352 L 138,342 L 108,340 L 82,350 Z"
+              fill="url(#biharGrad)"
+              stroke="#163A2D"
+              stroke-width="2.5"
+              stroke-linejoin="round"
+              filter="url(#mapShadow)"
+            />
+
+            <!-- Ganges River (approximate) -->
+            <path
+              d="M 55,295 Q 120,275 200,268 Q 280,262 360,270 Q 440,278 520,265 Q 580,255 610,240"
+              fill="none" stroke="#60a5fa" stroke-width="3.5" stroke-linecap="round" opacity="0.55"
+            />
+            <text x="295" y="260" font-family="Plus Jakarta Sans,sans-serif" font-size="8" fill="#60a5fa" opacity="0.8" text-anchor="middle">Ganga River</text>
+
+            <!-- Kosi River -->
+            <path
+              d="M 530,80 Q 540,140 548,195 Q 555,240 558,290"
+              fill="none" stroke="#93c5fd" stroke-width="2" opacity="0.4" stroke-linecap="round"
+            />
+
+            <!-- Mithila Region Highlight -->
+            <path
+              d="M 280,68 L 310,58 L 348,54 L 385,52 L 418,56 L 448,64
+                 L 490,80 L 525,100 L 548,128 L 560,160 L 558,195
+                 L 545,225 L 520,248 L 490,262 L 456,268 L 420,266
+                 L 385,260 L 350,254 L 318,248 L 292,240 L 272,226
+                 L 262,208 L 260,185 L 265,162 L 274,140 L 278,110 Z"
+              fill="rgba(22,58,45,0.07)"
+              stroke="rgba(22,58,45,0.18)"
+              stroke-width="1.5"
+              stroke-dasharray="6,4"
+            />
+            <text x="400" y="172" font-family="Plus Jakarta Sans,sans-serif" font-size="9" fill="rgba(22,58,45,0.40)" text-anchor="middle" font-weight="700" letter-spacing="0.08em">MITHILA REGION</text>
+
+            <!-- ── Nepal Border ── -->
+            <line x1="254" y1="84" x2="552" y2="114" stroke="#9ca3af" stroke-width="1.5" stroke-dasharray="5,4" opacity="0.5"/>
+            <text x="400" y="78" font-family="Plus Jakarta Sans,sans-serif" font-size="8" fill="#9ca3af" text-anchor="middle" opacity="0.7">— NEPAL BORDER —</text>
+
+            <!-- ── District Markers ── -->
+            <!-- 1. Darbhanga -->
+            <g class="d-district" data-id="darbhanga" onclick="activateDistrict('darbhanga')">
+              <circle class="d-ring" cx="380" cy="198" r="8"/>
+              <circle class="d-dot" cx="380" cy="198" r="9" fill="#163A2D"/>
+              <circle cx="380" cy="198" r="4" fill="#C9A45C"/>
+              <text class="d-label" x="380" y="218">DARBHANGA</text>
+            </g>
+
+            <!-- 2. Madhubani -->
+            <g class="d-district" data-id="madhubani" onclick="activateDistrict('madhubani')">
+              <circle class="d-ring" cx="450" cy="152" r="8"/>
+              <circle class="d-dot" cx="450" cy="152" r="9" fill="#163A2D"/>
+              <circle cx="450" cy="152" r="4" fill="#C9A45C"/>
+              <text class="d-label" x="450" y="172">MADHUBANI</text>
+            </g>
+
+            <!-- 3. Sitamarhi -->
+            <g class="d-district" data-id="sitamarhi" onclick="activateDistrict('sitamarhi')">
+              <circle class="d-ring" cx="340" cy="132" r="8"/>
+              <circle class="d-dot" cx="340" cy="132" r="9" fill="#163A2D"/>
+              <circle cx="340" cy="132" r="4" fill="#C9A45C"/>
+              <text class="d-label" x="340" y="152">SITAMARHI</text>
+            </g>
+
+            <!-- 4. Saharsa -->
+            <g class="d-district" data-id="saharsa" onclick="activateDistrict('saharsa')">
+              <circle class="d-ring" cx="516" cy="210" r="8"/>
+              <circle class="d-dot" cx="516" cy="210" r="9" fill="#163A2D"/>
+              <circle cx="516" cy="210" r="4" fill="#C9A45C"/>
+              <text class="d-label" x="516" y="230">SAHARSA</text>
+            </g>
+
+            <!-- 5. Supaul -->
+            <g class="d-district" data-id="supaul" onclick="activateDistrict('supaul')">
+              <circle class="d-ring" cx="498" cy="155" r="8"/>
+              <circle class="d-dot" cx="498" cy="155" r="9" fill="#163A2D"/>
+              <circle cx="498" cy="155" r="4" fill="#C9A45C"/>
+              <text class="d-label" x="498" y="143">SUPAUL</text>
+            </g>
+
+            <!-- 6. Araria -->
+            <g class="d-district" data-id="araria" onclick="activateDistrict('araria')">
+              <circle class="d-ring" cx="558" cy="132" r="8"/>
+              <circle class="d-dot" cx="558" cy="132" r="9" fill="#163A2D"/>
+              <circle cx="558" cy="132" r="4" fill="#C9A45C"/>
+              <text class="d-label" x="558" y="120">ARARIA</text>
+            </g>
+
+            <!-- 7. Katihar -->
+            <g class="d-district" data-id="katihar" onclick="activateDistrict('katihar')">
+              <circle class="d-ring" cx="596" cy="182" r="8"/>
+              <circle class="d-dot" cx="596" cy="182" r="9" fill="#163A2D"/>
+              <circle cx="596" cy="182" r="4" fill="#C9A45C"/>
+              <text class="d-label" x="596" y="202">KATIHAR</text>
+            </g>
+
+            <!-- 8. Muzaffarpur -->
+            <g class="d-district" data-id="muzaffarpur" onclick="activateDistrict('muzaffarpur')">
+              <circle class="d-ring" cx="312" cy="218" r="8"/>
+              <circle class="d-dot" cx="312" cy="218" r="9" fill="#163A2D"/>
+              <circle cx="312" cy="218" r="4" fill="#C9A45C"/>
+              <text class="d-label" x="312" y="238">MUZAFFARPUR</text>
+            </g>
+
+            <!-- Patna (Capital - reference) -->
+            <circle cx="208" cy="278" r="5" fill="#6b7280" opacity="0.6"/>
+            <text x="208" y="295" font-family="Plus Jakarta Sans,sans-serif" font-size="8" fill="#6b7280" text-anchor="middle" opacity="0.7">Patna</text>
+
+            <!-- Compass -->
+            <g transform="translate(82,410)">
+              <circle r="18" fill="var(--white)" stroke="#e5e7eb" stroke-width="1.5"/>
+              <text y="-6" font-family="Plus Jakarta Sans,sans-serif" font-size="9" fill="#163A2D" text-anchor="middle" font-weight="700">N</text>
+              <line x1="0" y1="-2" x2="0" y2="-13" stroke="#163A2D" stroke-width="1.5"/>
+              <line x1="0" y1="2" x2="0" y2="13" stroke="#9ca3af" stroke-width="1"/>
+            </g>
+
+            <!-- Scale bar -->
+            <g transform="translate(120,415)">
+              <rect x="0" y="0" width="60" height="5" rx="2" fill="#163A2D" opacity="0.3"/>
+              <text x="0" y="16" font-family="Plus Jakarta Sans,sans-serif" font-size="8" fill="#6b7280">0</text>
+              <text x="55" y="16" font-family="Plus Jakarta Sans,sans-serif" font-size="8" fill="#6b7280">100 km</text>
+            </g>
+
+          </svg>
+          <!-- Hover tooltip -->
+          <div class="map-tooltip" id="mapTooltip">
+            <div class="map-tooltip-name" id="ttName">—</div>
+            <div class="map-tooltip-price" id="ttPrice">—</div>
+            <div class="map-tooltip-grade" id="ttGrade">Grade A Jumbo · 5 kg pack</div>
+          </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="map-legend">
+          <div class="legend-item">
+            <div class="legend-dot" style="background:#163A2D"></div>
+            Makhana District
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background:#60a5fa"></div>
+            Ganga River
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background:rgba(22,58,45,0.15); border:1px dashed #163A2D"></div>
+            Mithila Region
+          </div>
+        </div>
+      </div>
+
+      <!-- ════ PRICE CARDS ════ -->
+      <div class="cards-panel">
+        <div class="cards-panel-header">
+          <div class="cards-panel-kicker">Live Wholesale Rates · 5 kg</div>
+          <div class="cards-panel-title">District Price Board</div>
+          <div class="cards-panel-note">Click any district to highlight on map</div>
+        </div>
+        <div class="price-cards-list" id="priceCardsList">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+    </div><!-- /map-cards-grid -->
+
+    <!-- ════ GRADE REFERENCE (6-SUTA, 5-SUTA & 4-SUTA GUIDE) ════ -->
+    <div class="grade-section" id="makhanaGrades">
+      <div class="grade-header">
+        <div class="grade-kicker">MITHILA MAKHANA GRADING GUIDE</div>
+        <h2 class="grade-title">Understanding 6-Suta, 5-Suta & 4-Suta Makhana</h2>
+        <p class="grade-sub">बिहार और मिथिला की मंडियों में मखाने की साइज़ "सूता" (Suta) में कैसे तय होती है — पूरी जानकारी</p>
+      </div>
+
+      <!-- Suta Concept Educational Banner -->
+      <div class="suta-concept-banner">
+        <div class="scb-formula-box">
+          <span class="scb-badge">GRADING FORMULA</span>
+          <div class="scb-math">
+            <span class="scb-math-big">1 Inch = 8 Suta</span>
+            <span class="scb-math-sub">1 सूता (Suta) = ~3.175 mm</span>
+          </div>
+          <div class="scb-sieve-note">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="4"/></svg>
+            <span>Graded via Standard Sieve (छलना)</span>
+          </div>
+        </div>
+        <div class="scb-text-box">
+          <h3 class="scb-title">मखाने में "सूता" (Suta) का क्या मतलब होता है?</h3>
+          <p class="scb-desc">
+            मखाना भूनने (popping) के बाद, दानों को अलग-अलग छेद (mesh holes) वाली छलनी से छाना जाता है। 
+            <strong>जितना बड़ा सूता होगा, मखाने का दाना उतना ही बड़ा, गोल, दूधिया सफेद और वजन में हल्का (cloud-like crunch) होगा।</strong> 
+            बड़े दानों में छिलका (peeli/husk) बिल्कुल नहीं होता, इसलिए इनकी कीमत और एक्सपोर्ट डिमांड सबसे ज्यादा होती है।
+          </p>
+        </div>
+      </div>
+
+      <!-- 3 Key Grades Cards Grid -->
+      <div class="grade-grid">
+        <!-- 6+ SUTA (JUMBO) -->
+        <div class="grade-card grade-card--6suta">
+          <div class="grade-badge grade-badge-jumbo">
+            <span>👑 6+ SUTA · JUMBO PEARL</span>
+          </div>
+          <div class="grade-visual-pearl">
+            <div class="pearl-circle pearl-6suta">
+              <span class="pearl-symbol">6+</span>
+            </div>
+            <div class="pearl-mm-tag">Ø 19 mm – 22+ mm</div>
+          </div>
+          <div class="grade-name">6-Suta Jumbo Export Grade</div>
+          <div class="grade-hindi">छह सूता — सुपर जंबो व्हाइट</div>
+          <div class="grade-price-block">
+            <div class="grade-price-range">₹6,800 – ₹8,400</div>
+            <div class="grade-per-5kg">per 5 kg wholesale · Mandi Average</div>
+          </div>
+
+          <div class="grade-specs-list">
+            <div class="g-spec-item">
+              <span class="g-spec-label">दाना साइज़ (Diameter):</span>
+              <span class="g-spec-val">19 mm से 22+ mm (लगभग 3/4 इंच+)</span>
+            </div>
+            <div class="g-spec-item">
+              <span class="g-spec-label">रंग और फिनिश:</span>
+              <span class="g-spec-val">बिल्कुल दूधिया सफेद, 0% छिलका (Zero Peel)</span>
+            </div>
+            <div class="g-spec-item">
+              <span class="g-spec-label">क्रंच और पफ:</span>
+              <span class="g-spec-val">सुपर लाइट, मुंह में घुलने वाला अल्ट्रा क्रिस्प</span>
+            </div>
+            <div class="g-spec-item">
+              <span class="g-spec-label">छलना साइज़ (Sieve):</span>
+              <span class="g-spec-val">Mesh No. 6+ (6/8" पर रुकने वाला दाना)</span>
+            </div>
+          </div>
+
+          <div class="grade-best-for">
+            <span class="g-best-title">🎯 सबसे उपयुक्त (Best Used For):</span>
+            <p>International Exports (USA, Europe, Gulf), Luxury Corporate Gift Hampers, Five-Star Hotels, और Premium Gourmet Roasted Tins (Bhumiik / WisDom).</p>
+          </div>
+        </div>
+
+        <!-- 5+ SUTA (PREMIUM SELECT) -->
+        <div class="grade-card grade-card--5suta grade-card--featured">
+          <div class="grade-featured-pill">INDIA'S BESTSELLER</div>
+          <div class="grade-badge grade-badge-select">
+            <span>✨ 5+ SUTA · PREMIUM SELECT</span>
+          </div>
+          <div class="grade-visual-pearl">
+            <div class="pearl-circle pearl-5suta">
+              <span class="pearl-symbol">5+</span>
+            </div>
+            <div class="pearl-mm-tag">Ø 16 mm – 19 mm</div>
+          </div>
+          <div class="grade-name">5-Suta Super Premium</div>
+          <div class="grade-hindi">पांच सूता — क्लासिक प्रीमियम</div>
+          <div class="grade-price-block">
+            <div class="grade-price-range">₹5,600 – ₹6,900</div>
+            <div class="grade-per-5kg">per 5 kg wholesale · High Volume</div>
+          </div>
+
+          <div class="grade-specs-list">
+            <div class="g-spec-item">
+              <span class="g-spec-label">दाना साइज़ (Diameter):</span>
+              <span class="g-spec-val">16 mm से 19 mm (लगभग 5/8 इंच)</span>
+            </div>
+            <div class="g-spec-item">
+              <span class="g-spec-label">रंग और फिनिश:</span>
+              <span class="g-spec-val">एकसमान गोल सफेद दाना, साफ-सुथरा</span>
+            </div>
+            <div class="g-spec-item">
+              <span class="g-spec-label">क्रंच और पफ:</span>
+              <span class="g-spec-val">क्रिस्पी और हल्का, रोस्टिंग के लिए परफेक्ट</span>
+            </div>
+            <div class="g-spec-item">
+              <span class="g-spec-label">छलना साइज़ (Sieve):</span>
+              <span class="g-spec-val">Mesh No. 5+ (5/8" छलनी से तैयार)</span>
+            </div>
+          </div>
+
+          <div class="grade-best-for">
+            <span class="g-best-title">🎯 सबसे उपयुक्त (Best Used For):</span>
+            <p>FMCG Branded Retail Pouches, Supermarket Grocery Shelves, Daily Home Health Snacking, B2B Private Labeling, और Flavored Makhana Snacks.</p>
+          </div>
+        </div>
+
+        <!-- 4+ SUTA (STANDARD KITCHEN) -->
+        <div class="grade-card grade-card--4suta">
+          <div class="grade-badge grade-badge-standard">
+            <span>🍲 4+ SUTA · KITCHEN STANDARD</span>
+          </div>
+          <div class="grade-visual-pearl">
+            <div class="pearl-circle pearl-4suta">
+              <span class="pearl-symbol">4+</span>
+            </div>
+            <div class="pearl-mm-tag">Ø 13 mm – 16 mm</div>
+          </div>
+          <div class="grade-name">4-Suta Regular Kitchen Grade</div>
+          <div class="grade-hindi">चार सूता — कुकिंग व हलवाई ग्रेड</div>
+          <div class="grade-price-block">
+            <div class="grade-price-range">₹4,200 – ₹5,400</div>
+            <div class="grade-per-5kg">per 5 kg wholesale · Economical</div>
+          </div>
+
+          <div class="grade-specs-list">
+            <div class="g-spec-item">
+              <span class="g-spec-label">दाना साइज़ (Diameter):</span>
+              <span class="g-spec-val">13 mm से 16 mm (लगभग 1/2 इंच)</span>
+            </div>
+            <div class="g-spec-item">
+              <span class="g-spec-label">रंग और फिनिश:</span>
+              <span class="g-spec-val">प्राकृतिक सफेद, थोड़ा कॉम्पैक्ट व घना दाना</span>
+            </div>
+            <div class="g-spec-item">
+              <span class="g-spec-label">क्रंच और पफ:</span>
+              <span class="g-spec-val">घना क्रंच (दूध या ग्रेवी में घुलकर नहीं टूटता)</span>
+            </div>
+            <div class="g-spec-item">
+              <span class="g-spec-label">छलना साइज़ (Sieve):</span>
+              <span class="g-spec-val">Mesh No. 4+ (4/8" छलनी से तैयार)</span>
+            </div>
+          </div>
+
+          <div class="grade-best-for">
+            <span class="g-best-title">🎯 सबसे उपयुक्त (Best Used For):</span>
+            <p>शाही मखाना खीर (Makhana Kheer), मटर-मखाना सब्जी, हलवाई मिठाई, नमकीन मिक्सचर, और प्रोटीन आटा / बेबी फूड प्रोसेसिंग (High yield per kg).</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Comparison Table -->
+      <div class="suta-table-card">
+        <div class="suta-table-head">
+          <h3 class="suta-table-title">Quick Comparison: 6-Suta vs 5-Suta vs 4-Suta</h3>
+          <span class="suta-table-subtitle">एक नज़र में तीनों ग्रेड्स की तुलना</span>
+        </div>
+        <div class="suta-table-wrap">
+          <table class="suta-table">
+            <thead>
+              <tr>
+                <th>पैरामीटर (Parameter)</th>
+                <th class="th-jumbo">6+ Suta (Jumbo Export)</th>
+                <th class="th-select">5+ Suta (Premium Select)</th>
+                <th class="th-standard">4+ Suta (Kitchen Standard)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>दाना व्यास (Diameter)</strong></td>
+                <td><span class="tag-cell tag-jumbo">19 mm – 22+ mm</span> (~3/4"+)</td>
+                <td><span class="tag-cell tag-select">16 mm – 19 mm</span> (~5/8")</td>
+                <td><span class="tag-cell tag-standard">13 mm – 16 mm</span> (~1/2")</td>
+              </tr>
+              <tr>
+                <td><strong>छलना नंबर (Sieve Mesh)</strong></td>
+                <td>No. 6+ (छह सूता छलना)</td>
+                <td>No. 5+ (पांच सूता छलना)</td>
+                <td>No. 4+ (चार सूता छलना)</td>
+              </tr>
+              <tr>
+                <td><strong>पफ वॉल्यूम व क्रंच</strong></td>
+                <td>अल्ट्रा-लाइट, हाईएस्ट पफ वॉल्यूम</td>
+                <td>यूनिफॉर्म क्रिस्पी, बैलेंस्ड पफ</td>
+                <td>घना, फर्म क्रंच कर्नल</td>
+              </tr>
+              <tr>
+                <td><strong>छिलका / वेस्टेज (Husk/Peel)</strong></td>
+                <td>0% (बिल्कुल स्पॉटलेस दूधिया सफेद)</td>
+                <td>&lt; 0.5% (नगण्य छिलका)</td>
+                <td>&lt; 1.5% (स्वाभाविक प्राकृतिक दाना)</td>
+              </tr>
+              <tr>
+                <td><strong>मुख्य उपयोग (Key Industry Use)</strong></td>
+                <td>एक्सपोर्ट, लग्जरी गिफ्ट बॉक्स, रोस्टेड टिन्स</td>
+                <td>FMCG रिटेल पैकेट, डेली हेल्दी स्नैकिंग</td>
+                <td>मखाना खीर, सब्जी ग्रेवी, हलवाई, नमकीन</td>
+              </tr>
+              <tr>
+                <td><strong>होलसेल वैल्यू (Market Price Tier)</strong></td>
+                <td><strong>सर्वोच्च प्रीमियम (Premium Luxury)</strong></td>
+                <td><strong>सर्वाधिक बिकने वाला (Best Commercial Value)</strong></td>
+                <td><strong>सर्वाधिक किफायती (Budget Friendly)</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Pro Buyer Tip Box -->
+      <div class="suta-buyer-tip">
+        <div class="sbt-header">
+          <span class="sbt-icon">&#x1F4A1;</span>
+          <div>
+            <h4 class="sbt-title">व्यापारियों और थोक खरीदारों के लिए एक्सपर्ट सलाह (Buyer's Advisory)</h4>
+            <span class="sbt-sub">अपने बिज़नेस मॉडल के अनुसार सही ग्रेड चुनें:</span>
+          </div>
+        </div>
+        <div class="sbt-grid">
+          <div class="sbt-col">
+            <div class="sbt-col-tag">RETAIL BRANDS & PACKETS</div>
+            <strong>5+ Suta चुनें:</strong> यह पैकेट में भरा-भरा दिखता है, ग्राहक को बहुत पसंद आता है और प्रति पैकेट प्रॉफिट मार्जिन सबसे बेहतरीन देता है।
+          </div>
+          <div class="sbt-col">
+            <div class="sbt-col-tag">EXPORTS & LUXURY GIFTS</div>
+            <strong>6+ Suta चुनें:</strong> यूएसए, यूरोप या कॉरपोरेट गिफ्टिंग के लिए इसका बड़ा आकार और दूधिया सफेदी इंटरनेशनल स्टैंडर्ड की होती है।
+          </div>
+          <div class="sbt-col">
+            <div class="sbt-col-tag">CATERING, KHEER & FLOUR</div>
+            <strong>4+ Suta चुनें:</strong> हलवाई व फूड कैटरिंग के लिए प्रति किलो ज्यादा दानों की संख्या (highest pearl count) मिलती है और दूध/ग्रेवी में टेस्ट लाजवाब बनता है।
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ════ ENQUIRY STRIP ════ -->
+    <div class="enquiry-strip">
+      <div class="eq-text">
+        <h2>Ready to Place<br><em>Your Bulk Order?</em></h2>
+        <p>Contact us directly on WhatsApp or call our supply desk. We supply Grade A Jumbo Makhana pan-India with competitive bulk pricing, minimum order from 25 kg.</p>
+      </div>
+      <div class="eq-actions">
+        <a href="https://wa.me/916205846653?text=Hello%2C%20I%20saw%20your%20Bihar%20Live%20Makhana%20Rates%20page%20and%20would%20like%20to%20enquire%20about%20bulk%20pricing%20for%205kg%2B%20order." target="_blank" class="eq-btn eq-btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Bulk Enquiry
+        </a>
+        <a href="tel:+916205846653" class="eq-btn eq-btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12 19.79 19.79 0 011 3.18a2 2 0 012-2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Call: +91 62058 46653
+        </a>
+      </div>
+    </div>
+
+    <!-- ════ DISCLAIMER ════ -->
+    <div class="disclaimer">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <p><strong>Disclaimer:</strong> These are indicative wholesale reference prices for Grade A Jumbo Makhana (6-Sut) per 5 kg, compiled from Bihar agricultural mandis and supplier networks. Prices fluctuate based on seasonal availability, demand, transport costs, and quality grading. Final pricing is subject to negotiation and confirmation by Roots 2 Retails supply team. Prices are not binding quotes. Contact us for confirmed bulk rates.</p>
+    </div>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- FOOTER                                         -->
+  <!-- ══════════════════════════════════════════════ -->
+  <footer class="lp-footer">
+    <span>© 2025 Root N Rise Agro India Pvt. Ltd. — Roots 2 Retails</span>
+    <span>
+      <a href="mailto:nayavayapar@gmail.com">nayavayapar@gmail.com</a>
+      &nbsp;·&nbsp;
+      <a href="tel:+916205846653">+91 62058 46653</a>
+    </span>
+    <a href="index.html" style="color:rgba(247,241,229,0.50)">← Back to Website</a>
+  </footer>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- JAVASCRIPT — Live Prices, Map, Ticker          -->
+  <!-- ══════════════════════════════════════════════ -->
+  <script>
+  (function () {
+    'use strict';
+
+    /* ─── District Data ─── */
+    var DISTRICTS = [
+      {
+        id:       'darbhanga',
+        name:     'Darbhanga',
+        hindi:    'दरभंगा',
+        basePrice: 6800,
+        grade:    'Grade A · GI Tagged Origin',
+        note:     'Largest makhana trading hub in India',
+        mapX:     380, mapY: 198
+      },
+      {
+        id:       'madhubani',
+        name:     'Madhubani',
+        hindi:    'मधुबनी',
+        basePrice: 7050,
+        grade:    'Grade A · Mithila Belt',
+        note:     '2nd largest production center',
+        mapX:     450, mapY: 152
+      },
+      {
+        id:       'sitamarhi',
+        name:     'Sitamarhi',
+        hindi:    'सीतामढ़ी',
+        basePrice: 6950,
+        grade:    'Grade A · Nepal Border Belt',
+        note:     'Pristine himalayan water-fed ponds',
+        mapX:     340, mapY: 132
+      },
+      {
+        id:       'saharsa',
+        name:     'Saharsa',
+        hindi:    'सहरसा',
+        basePrice: 7200,
+        grade:    'Grade A · Kosi River Zone',
+        note:     'High-quality kosi belt makhana',
+        mapX:     516, mapY: 210
+      },
+      {
+        id:       'supaul',
+        name:     'Supaul',
+        hindi:    'सुपौल',
+        basePrice: 7080,
+        grade:    'Grade A · Kosi Wetlands',
+        note:     'Premium wetland cultivation',
+        mapX:     498, mapY: 155
+      },
+      {
+        id:       'araria',
+        name:     'Araria',
+        hindi:    'अररिया',
+        basePrice: 7300,
+        grade:    'Grade A · Northeast Bihar',
+        note:     'Premium northeast corridor rates',
+        mapX:     558, mapY: 132
+      },
+      {
+        id:       'katihar',
+        name:     'Katihar',
+        hindi:    'कटिहार',
+        basePrice: 7450,
+        grade:    'Grade A · East Bihar Hub',
+        note:     'Major eastern trade & transit hub',
+        mapX:     596, mapY: 182
+      },
+      {
+        id:       'muzaffarpur',
+        name:     'Muzaffarpur',
+        hindi:    'मुजफ्फरपुर',
+        basePrice: 7120,
+        grade:    'Grade A · North-Central Bihar',
+        note:     'Large wholesale market mandi',
+        mapX:     312, mapY: 218
+      }
+    ];
+
+    /* ─── State ─── */
+    var prices      = {};   // { id: currentPrice }
+    var prevPrices  = {};
+    var changes     = {};   // { id: delta }
+    var activeId    = null;
+
+    /* Initialise prices */
+    DISTRICTS.forEach(function(d) {
+      prices[d.id]    = d.basePrice + randInt(-120, 120);
+      prevPrices[d.id]= prices[d.id];
+      changes[d.id]   = 0;
+    });
+
+    /* ─── Utilities ─── */
+    function randInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    function fmt(n) {
+      return '₹' + n.toLocaleString('en-IN');
+    }
+    function now() {
+      return new Date().toLocaleTimeString('en-IN', { hour:'2-digit', minute:'2-digit', second:'2-digit', hour12: true });
+    }
+
+    /* ─── Render price cards ─── */
+    function renderCards() {
+      var list = document.getElementById('priceCardsList');
+      if (!list) return;
+      list.innerHTML = '';
+
+      var sorted = DISTRICTS.slice().sort(function(a,b){ return prices[a.id] - prices[b.id]; });
+
+      sorted.forEach(function(d, idx) {
+        var price  = prices[d.id];
+        var change = changes[d.id];
+        var arrow  = change > 0 ? '▲' : change < 0 ? '▼' : '—';
+        var cls    = change > 0 ? 'up' : change < 0 ? 'down' : 'flat';
+        var isActive = activeId === d.id;
+
+        var card = document.createElement('div');
+        card.className = 'price-card' + (isActive ? ' active' : '');
+        card.id        = 'card-' + d.id;
+        card.setAttribute('data-id', d.id);
+
+        card.innerHTML =
+          '<div class="pc-rank">' + (idx + 1) + '</div>' +
+          '<div class="pc-info">' +
+            '<div class="pc-district">' + d.name + ' <span style="font-size:12px;font-weight:400;color:var(--muted);">' + d.hindi + '</span></div>' +
+            '<div class="pc-sub">' + d.note + '</div>' +
+          '</div>' +
+          '<div class="pc-price-block">' +
+            '<div class="pc-price" id="price-' + d.id + '">' + fmt(price) + '</div>' +
+            '<div class="pc-unit">per 5 kg · Grade A</div>' +
+            '<div class="pc-change ' + cls + '">' + arrow + ' ' + (change !== 0 ? fmt(Math.abs(change)) : 'Stable') + '</div>' +
+          '</div>';
+
+        card.addEventListener('click', function() { activateDistrict(d.id); });
+        list.appendChild(card);
+      });
+    }
+
+    /* ─── Update prices (simulate live feed) ─── */
+    function updatePrices() {
+      DISTRICTS.forEach(function(d) {
+        var delta = randInt(-80, 80);
+        /* Keep within ±300 of base */
+        var next = prices[d.id] + delta;
+        if (next < d.basePrice - 300) next = d.basePrice - 300;
+        if (next > d.basePrice + 300) next = d.basePrice + 300;
+        /* Snap to nearest 50 */
+        next = Math.round(next / 50) * 50;
+
+        changes[d.id]   = next - prices[d.id];
+        prevPrices[d.id] = prices[d.id];
+        prices[d.id]    = next;
+      });
+
+      renderCards();
+      renderTicker();
+      flashPrices();
+      document.getElementById('lastUpdated').textContent =
+        'Last updated: ' + now() + ' IST  •  Next refresh in 30 sec';
+    }
+
+    /* ─── Flash animation on price change ─── */
+    function flashPrices() {
+      DISTRICTS.forEach(function(d) {
+        var el = document.getElementById('price-' + d.id);
+        if (!el) return;
+        var dir = changes[d.id] > 0 ? 'flash-up' : changes[d.id] < 0 ? 'flash-down' : '';
+        if (!dir) return;
+        el.classList.add(dir);
+        setTimeout(function() { el.classList.remove(dir); }, 1200);
+      });
+    }
+
+    /* ─── Render ticker ─── */
+    function renderTicker() {
+      var track = document.getElementById('tickerTrack');
+      if (!track) return;
+
+      var html = '';
+      /* Duplicate for seamless loop */
+      for (var rep = 0; rep < 2; rep++) {
+        DISTRICTS.forEach(function(d) {
+          var change = changes[d.id];
+          var arrow  = change > 0
+            ? '<span class="tick-up">▲ ' + fmt(change) + '</span>'
+            : change < 0
+              ? '<span class="tick-down">▼ ' + fmt(Math.abs(change)) + '</span>'
+              : '<span style="color:rgba(247,241,229,0.5)">—</span>';
+
+          html +=
+            '<div class="ticker-item">' +
+              '<span style="color:rgba(247,241,229,0.6)">' + d.name + '</span>' +
+              '<span class="ticker-price">' + fmt(prices[d.id]) + '</span>' +
+              '<span style="font-size:10px;color:rgba(247,241,229,0.4)">/5kg</span>' +
+              arrow +
+            '</div>';
+        });
+      }
+      track.innerHTML = html;
+    }
+
+    /* ─── Map interaction ─── */
+    window.activateDistrict = function(id) {
+      activeId = id;
+
+      /* Reset all SVG dots */
+      document.querySelectorAll('.d-district').forEach(function(el) {
+        el.classList.remove('active');
+      });
+      /* Activate chosen */
+      var svgEl = document.querySelector('[data-id="' + id + '"]');
+      if (svgEl) svgEl.classList.add('active');
+
+      /* Scroll to card */
+      var cardEl = document.getElementById('card-' + id);
+      if (cardEl) {
+        document.querySelectorAll('.price-card').forEach(function(c) { c.classList.remove('active'); });
+        cardEl.classList.add('active');
+        cardEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      /* Show tooltip on map */
+      var d = DISTRICTS.find(function(x) { return x.id === id; });
+      if (!d) return;
+
+      var tooltip = document.getElementById('mapTooltip');
+      var svgWrap = document.getElementById('mapWrap');
+      if (!tooltip || !svgWrap || !svgEl) return;
+
+      var svgRect  = svgWrap.querySelector('svg').getBoundingClientRect();
+      var wrapRect = svgWrap.getBoundingClientRect();
+      var scaleX   = svgRect.width  / 680;
+      var scaleY   = svgRect.height / 520;
+
+      var tipX = d.mapX * scaleX + (svgRect.left - wrapRect.left) + 14;
+      var tipY = d.mapY * scaleY + (svgRect.top  - wrapRect.top)  - 60;
+
+      tooltip.style.left = tipX + 'px';
+      tooltip.style.top  = tipY + 'px';
+      document.getElementById('ttName').textContent  = d.name + ' ' + d.hindi;
+      document.getElementById('ttPrice').textContent = fmt(prices[d.id]) + ' / 5 kg';
+      document.getElementById('ttGrade').textContent = d.grade;
+      tooltip.classList.add('visible');
+
+      /* Hide tooltip after 2.5s */
+      clearTimeout(window._ttTimer);
+      window._ttTimer = setTimeout(function() { tooltip.classList.remove('visible'); }, 2500);
+    };
+
+    /* ─── SVG district hover ─── */
+    document.querySelectorAll('.d-district').forEach(function(el) {
+      el.addEventListener('mouseenter', function() {
+        activateDistrict(el.getAttribute('data-id'));
+      });
+    });
+
+    /* ─── Init ─── */
+    renderCards();
+    renderTicker();
+    document.getElementById('lastUpdated').textContent =
+      'Last updated: ' + now() + ' IST  •  Next refresh in 30 sec';
+
+    /* Start live updates every 30 seconds */
+    setInterval(updatePrices, 30000);
+
+    /* Also do a quick cosmetic tick at 5s for freshness */
+    setTimeout(updatePrices, 5000);
+
+  })();
+  </script>
+
+</body>
+</html>
+

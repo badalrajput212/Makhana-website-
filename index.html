@@ -1,0 +1,2022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAKHANA - Premium Fox Nuts from Mithila | Ancient Wisdom. Modern Crunch.</title>
+  <meta name="description" content="Discover premium Makhana from Mithila - naturally light, deliciously crunchy and crafted for modern snacking. Handpicked from freshwater wetlands, slow wood-fired roasted.">
+  <meta name="keywords" content="Makhana, Fox Nuts, Lotus Seeds, Mithila Makhana, Healthy Snacks, Protein Snacks, Roasted Makhana, Gluten Free Snacks, Gourmet Food India">
+  <meta name="theme-color" content="#163A2D">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="MAKHANA - Premium Fox Nuts from Mithila">
+  <meta property="og:description" content="Discover premium Makhana from Mithila - naturally light, deliciously crunchy and crafted for modern snacking.">
+  <meta property="og:image" content="assets/qwill-flatlay.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo-nayavayapar.png">
+  <link rel="apple-touch-icon" href="assets/logo-nayavayapar.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- GSAP for Smooth Luxury Animation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css?v=2.2">
+
+  <!-- Bulk Order Chatbot Stylesheet -->
+  <link rel="stylesheet" href="chatbot.css">
+</head>
+<body>
+
+  <!-- Ambient Organic Grain Texture Overlay -->
+  <div class="site-grain" aria-hidden="true"></div>
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar" role="region" aria-label="Announcement">
+    <div class="announcement-content">
+      <span class="announcement-star">?</span>
+      <span>FREE SHIPPING ON ORDERS ABOVE ?499</span>
+      <span class="announcement-separator">.</span>
+      <span>100% SOURCED FROM MITHILA WETLANDS</span>
+      <span class="announcement-separator">.</span>
+      <span>SLOW WOOD-FIRED ROAST</span>
+      <span class="announcement-star">?</span>
+    </div>
+  </div>
+
+  <!-- Sticky Premium Navigation Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="nav-container">
+      <!-- Left: Logo -->
+      <a href="#home" class="brand-logo" aria-label="NayaVayapar - Your Sourcing Partner">
+        <img
+          src="assets/logo-nayavayapar.png"
+          alt="NayaVayapar - Your Sourcing Partner"
+          class="brand-logo-img"
+          loading="eager"
+          decoding="async"
+        />
+      </a>
+
+      <!-- Center: Desktop Navigation Links -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#story" class="nav-link">Our Story</a></li>
+          <li><a href="#benefits" class="nav-link">Benefits</a></li>
+          <li><a href="#shop" class="nav-link">Shop</a></li>
+          <li><a href="#recipes" class="nav-link">Recipes</a></li>
+          <li><a href="#bulk" class="nav-link">Bulk Orders</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li>
+            <a href="bulk-pricing.html" class="nav-link nav-live-link" title="Live Bihar Makhana Mandi Rates">
+              <span class="nav-live-beacon sm"><span class="nav-live-dot"></span><span class="nav-live-ring"></span></span>
+              <span>Live Price</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Right: Search, Cart, Shop Button & Mobile Menu Toggle -->
+      <div class="nav-actions">
+        <!-- Search Trigger -->
+        <button type="button" class="action-btn search-trigger" id="searchTrigger" aria-label="Search products and recipes">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <!-- Live Price Button with Blinking Red Dot -->
+        <!-- <a href="bulk-pricing.html" class="nav-live-btn" id="navLivePriceBtn" title="View Real-Time Bihar Makhana Mandi Rates">
+          <span class="nav-live-beacon"><span class="nav-live-dot"></span><span class="nav-live-ring"></span></span>
+          <span class="nav-live-label">LIVE PRICE</span>
+        </a> -->
+
+        <!-- CTA Button -->
+        <a href="#bulkFormCard" class="btn btn-nav-cta">Bulk Orders</a>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button type="button" class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Fullscreen Navigation Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="mobile-drawer-inner">
+      <div class="mobile-drawer-head">
+        <a href="#home" class="brand-logo mobile-drawer-logo" onclick="document.getElementById('mobileDrawer').classList.remove('open')">
+          <img
+            src="assets/logo-nayavayapar.png"
+            alt="NayaVayapar"
+            class="brand-logo-img brand-logo-img--small"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
+        <button type="button" class="drawer-close" id="mobileCloseBtn" aria-label="Close menu">&times;</button>
+      </div>
+      <ul class="mobile-nav-list">
+        <li><a href="#home" class="mobile-link">01. Home</a></li>
+        <li><a href="#story" class="mobile-link">02. Our Story</a></li>
+        <li><a href="#benefits" class="mobile-link">03. Why Makhana</a></li>
+        <li><a href="#shop" class="mobile-link">04. Shop Collection</a></li>
+        <li><a href="#recipes" class="mobile-link">05. Kitchen Recipes</a></li>
+        <li><a href="#bulk" class="mobile-link">06. Bulk & Wholesale</a></li>
+        <li><a href="#contact" class="mobile-link">07. Contact Us</a></li>
+        <li>
+          <a href="bulk-pricing.html" class="mobile-link mobile-link--live">
+            <span class="nav-live-beacon"><span class="nav-live-dot"></span><span class="nav-live-ring"></span></span>
+            <span>08. Live Mandi Price (बिहार भाव)</span>
+          </a>
+        </li>
+      </ul>
+      <div class="mobile-drawer-footer">
+        <p class="drawer-tagline">"Ancient Wisdom. Modern Crunch."</p>
+        <div class="drawer-origin">Darbhanga . Mithila . Bihar</div>
+        <a href="#bulkFormCard" class="btn btn-primary btn-block drawer-cta">Shop Now / Bulk Inquiry</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Modal Overlay -->
+  <div class="search-overlay" id="searchOverlay" aria-hidden="true">
+    <div class="search-modal">
+      <div class="search-modal-header">
+        <div class="search-input-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="searchInput" placeholder="Search flavours, benefits, recipes..." autocomplete="off">
+          <button type="button" class="search-clear-btn" id="searchClearBtn" aria-label="Clear search">&times;</button>
+        </div>
+        <button type="button" class="search-close-btn" id="searchCloseBtn" aria-label="Close search">ESC</button>
+      </div>
+      <div class="quick-tags">
+        <span>Suggested:</span>
+        <button type="button" class="tag-pill" data-query="Cream Onion">Cream & Onion</button>
+        <button type="button" class="tag-pill" data-query="Peri Peri">Peri Peri</button>
+        <button type="button" class="tag-pill" data-query="Himalayan">Himalayan Salt</button>
+        <button type="button" class="tag-pill" data-query="Tangy Tomato">Tangy Tomato</button>
+        <button type="button" class="tag-pill" data-query="Ragi">Ragi Chips</button>
+      </div>
+      <div class="search-results" id="searchResults">
+        <!-- Live search results injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <main id="mainContent">
+
+    <!-- ================================================== -->
+    <!-- SECTION 01 - CINEMATIC HERO & HERO SLIDER          -->
+    <!-- ================================================== -->
+    <section class="hero-section" id="home">
+      <!-- Background Luxury Glow & Geometric Accents -->
+      <div class="hero-backdrop" aria-hidden="true">
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+        <div class="hero-lotus-watermark">
+          <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M150 20 C160 80 200 120 280 150 C200 180 160 220 150 280 C140 220 100 180 20 150 C100 120 140 80 150 20 Z" stroke="rgba(201, 164, 92, 0.15)" stroke-width="1.5"/>
+            <circle cx="150" cy="150" r="90" stroke="rgba(201, 164, 92, 0.12)" stroke-width="1" stroke-dasharray="4 6"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="container hero-container">
+        <!-- Hero Left Column: Editorial Copy -->
+        <div class="hero-content reveal">
+          <div class="hero-label">
+            <span class="label-bullet">?</span>
+            <span class="label-text">FROM THE HEART OF MITHILA</span>
+          </div>
+
+          <h1 class="hero-heading">
+            THE GOLDEN<br>
+            CRUNCH OF<br>
+            <span class="hero-heading-italic">MITHILA.</span>
+          </h1>
+
+          <p class="hero-description">
+            Handpicked fox nuts, slowly roasted and crafted into a snack that's as wholesome as it is irresistible. Pure wetland superfood for contemporary living.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#shop" class="btn btn-primary">
+              <span>EXPLORE PRODUCTS</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="#story" class="btn btn-outline">OUR STORY</a>
+          </div>
+
+          <!-- Editorial Trust Badges -->
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Mithila Origin GI-Harvest</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">9.7g</span>
+              <span class="stat-label">Plant Protein / 100g</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">0g</span>
+              <span class="stat-label">Trans Fat & Gluten Free</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Right Column: Floating Visual Composition with Floating Nuts -->
+        <div class="hero-visual reveal">
+          <!-- Outer Decorative Golden Orbit Ring -->
+          <div class="hero-orbit" aria-hidden="true"></div>
+
+          <!-- Main Hero Showcase Frame -->
+          <div class="hero-image-card">
+            <img src="assets/qwill-flatlay.png" alt="Makhana flatlay composition with premium packaging and roasted fox nuts" class="hero-main-img" id="heroParallaxImg">
+            <div class="hero-card-overlay"></div>
+            <div class="hero-tag-badge">
+              <span class="tag-gold">ENJOYFIT</span>
+              <span class="tag-sub">MAKHANA - ISO 22000:2018</span>
+            </div>
+          </div>
+
+          <!-- Floating Individual Makhana Pieces (Parallax Animation) -->
+          <div class="floating-nut nut-1" aria-hidden="true">
+            <div class="nut-shape"></div>
+          </div>
+          <div class="floating-nut nut-2" aria-hidden="true">
+            <div class="nut-shape"></div>
+          </div>
+          <div class="floating-nut nut-3" aria-hidden="true">
+            <div class="nut-shape"></div>
+          </div>
+          <div class="floating-nut nut-4" aria-hidden="true">
+            <div class="nut-shape"></div>
+          </div>
+          <div class="floating-nut nut-5" aria-hidden="true">
+            <div class="nut-shape"></div>
+          </div>
+
+          <!-- Floating Heritage Seal Badge -->
+          <div class="heritage-badge">
+            <svg class="badge-ring-text" viewBox="0 0 100 100">
+              <path id="badgeCirclePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent" />
+              <text font-size="10.5" fill="#163A2D" letter-spacing="2">
+                <textPath href="#badgeCirclePath">ORIGIN . MITHILA BIHAR . 100% PURE .</textPath>
+              </text>
+            </svg>
+            <div class="badge-center">
+              <span>GI</span>
+              <small>TAGGED</small>
+            </div>
+          </div>
+
+          <!-- Floating Quote Capsule -->
+          <div class="floating-quote-capsule">
+            <span class="capsule-icon">?</span>
+            <div>
+              <strong>Pure Pond-To-Pantry</strong>
+              <small>Slow wood-fired artisan popping</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- CINEMATIC HERO SLIDER COMPONENT                -->
+      <!-- ============================================== -->
+      <div class="hero-slider-section">
+        <div class="container">
+          <div class="slider-wrapper">
+            <!-- Slide Deck -->
+            <div class="slider-track" id="heroSliderTrack">
+
+              <!-- SLIDE 01 -->
+              <div class="hero-slide active" data-slide="0">
+                <div class="slide-visual slide-visual--contain">
+                  <img src="assets/qwill-hand.png" alt="Pure Simple Makhana held in hand with roasted bowl" class="slide-img slide-img--contain">
+                  <div class="slide-badge">ORIGIN COLLECTION</div>
+                </div>
+                <div class="slide-info">
+                  <span class="slide-eyebrow">SLIDE 01 - THE PURITY STANDARD</span>
+                  <h3 class="slide-title">PURE. SIMPLE. MAKHANA.</h3>
+                  <p class="slide-text">
+                    Nourished by natural monsoon waters and harvested at dawn by ancestral Mallah divers. No preservatives, zero fillers - just nature's crispiest pearl.
+                  </p>
+                  <div class="slide-cta-row">
+                    <a href="#shop" class="btn btn-primary">DISCOVER PURITY</a>
+                    <span class="slide-footnote">Cold-pressed olive oil roast</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SLIDE 02 -->
+              <div class="hero-slide" data-slide="1">
+                <div class="slide-visual slide-visual--contain">
+                  <img src="assets/editorial-travel.png" alt="Mithila wetlands landscape and traditional pond harvest" class="slide-img slide-img--contain">
+                  <div class="slide-badge">ANCIENT PROVENANCE</div>
+                </div>
+                <div class="slide-info">
+                  <span class="slide-eyebrow">SLIDE 02 - CENTURIES OF MASTERY</span>
+                  <h3 class="slide-title">FROM MITHILA TO YOUR TABLE.</h3>
+                  <p class="slide-text">
+                    Over 85% of the world's finest makhana originates in the serene ponds of Mithila, Bihar. We bridge centuries of generational craft with modern culinary elegance.
+                  </p>
+                  <div class="slide-cta-row">
+                    <a href="#story" class="btn btn-primary">READ THE ORIGIN</a>
+                    <span class="slide-footnote">Direct farmer collective fair-trade</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SLIDE 03 -->
+              <div class="hero-slide" data-slide="2">
+                <div class="slide-visual slide-visual--contain">
+                  <img src="assets/hero-makhana.png" alt="Crunch without guilt roasted makhana overflowing" class="slide-img slide-img--contain">
+                  <div class="slide-badge">GUILT-FREE INDULGENCE</div>
+                </div>
+                <div class="slide-info">
+                  <span class="slide-eyebrow">SLIDE 03 - MINDFUL CRUNCH</span>
+                  <h3 class="slide-title">CRUNCH WITHOUT THE GUILT.</h3>
+                  <p class="slide-text">
+                    High in plant-based proteins, rich in calcium and low in glycemic index. Upgrade your desk bowl, tea time, and post-workout fuel with effortless poise.
+                  </p>
+                  <div class="slide-cta-row">
+                    <a href="#benefits" class="btn btn-primary">EXPLORE WELLNESS</a>
+                    <span class="slide-footnote">67% fewer calories than potato crisps</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Slider Controls / Pagination -->
+            <div class="slider-controls">
+              <!-- Fractional Pagination -->
+              <div class="slider-counter" id="sliderCounter">
+                <span class="current-slide" id="currentSlideNum">01</span>
+                <span class="slash">/</span>
+                <span class="total-slides">03</span>
+              </div>
+
+              <!-- Progress Bar -->
+              <div class="slider-progress-bar">
+                <div class="slider-progress-fill" id="sliderProgress"></div>
+              </div>
+
+              <!-- Navigation Arrows -->
+              <div class="slider-nav-arrows">
+                <button type="button" class="slider-btn prev-btn" id="sliderPrev" aria-label="Previous Slide">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                </button>
+                <button type="button" class="slider-btn next-btn" id="sliderNext" aria-label="Next Slide">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Infinite Luxury Marquee Strip -->
+      <div class="luxury-marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>ANCIENT WISDOM</span>
+          <span class="marquee-bullet">?</span>
+          <span>MODERN CRUNCH</span>
+          <span class="marquee-bullet">?</span>
+          <span>100% ORGANIC MITHILA HARVEST</span>
+          <span class="marquee-bullet">?</span>
+          <span>HIGH PROTEIN . GLUTEN FREE</span>
+          <span class="marquee-bullet">?</span>
+          <span>SLOW WOOD-FIRED ROAST</span>
+          <span class="marquee-bullet">?</span>
+          <span>ANCIENT WISDOM</span>
+          <span class="marquee-bullet">?</span>
+          <span>MODERN CRUNCH</span>
+          <span class="marquee-bullet">?</span>
+          <span>100% ORGANIC MITHILA HARVEST</span>
+          <span class="marquee-bullet">?</span>
+          <span>HIGH PROTEIN . GLUTEN FREE</span>
+          <span class="marquee-bullet">?</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- SECTION 02 - OUR STORY                             -->
+    <!-- ================================================== -->
+    <section class="section story-section" id="story">
+      <div class="container">
+        <!-- Split Story Layout -->
+        <div class="story-grid">
+          <!-- Left: Editorial Visual Collages -->
+          <div class="story-visual-wrap reveal">
+            <div class="story-main-frame">
+              <img src="assets/Mint Makhana.png" alt="Holding pack of Makhana over bowl of roasted fox nuts" class="story-img-main">
+              <div class="story-stamp">
+                <!-- <span class="stamp-year">ESTD.</span> -->
+                <!-- <span class="stamp-region">MITHILA</span> -->
+              </div>
+            </div>
+            <!-- Secondary Overlapping Editorial Accent -->
+            <div class="story-floating-inset">
+              <img src="assets/Mint Makhana.png" alt="Lotus pond artwork and pure makhana seeds" class="story-img-sub">
+              <div class="inset-caption">
+                <strong>Euryale Ferox</strong>
+                <span>The Sacred Water Lily</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Narrative Story Copy -->
+          <div class="story-narrative reveal">
+            <div class="section-kicker">OUR ROOTS & ORIGIN</div>
+            <h2 class="editorial-heading">
+              ROOTED IN MITHILA.<br>
+              <span class="italic-serif">CRAFTED FOR TODAY.</span>
+            </h2>
+
+            <div class="story-lead">
+              In the nutrient-dense wetlands of Mithila, Bihar, makhana has been cultivated with sacred devotion for over two thousand years.
+            </div>
+
+            <p class="story-body">
+              Known botanically as <em>Euryale Ferox</em>, these precious seeds grow deep inside serene freshwater ponds shielded by giant spiny lotus leaves. For generations, traditional Mallah harvesting families have dived into the morning waters to collect these organic black seeds from pond beds.
+            </p>
+
+            <p class="story-body">
+              Our brand celebrates this profound agricultural heritage while presenting it in a modern, refined format. We bypass exploitative middlemen to work directly with farmer collectives, ensuring fair wages, ecological pond restoration, and grade-A jumbo harvests roasted to crunch perfection.
+            </p>
+
+            <!-- Story Value Cards -->
+            <div class="story-pillars">
+              <div class="pillar-card">
+                <span class="pillar-num">01</span>
+                <h4>GI Protected</h4>
+                <p>Authentic Mithila Makhana with designated Geographical Indication certification.</p>
+              </div>
+              <div class="pillar-card">
+                <span class="pillar-num">02</span>
+                <h4>Clean Sourcing</h4>
+                <p>Natural solar drying and artisan wood-fired popping without chemical bleaching.</p>
+              </div>
+              <div class="pillar-card">
+                <span class="pillar-num">03</span>
+                <h4>Fair Collective</h4>
+                <p>Empowering over 500+ Mithila farming families with sustainable livelihoods.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- "From Pond to Pantry" Horizontal Timeline -->
+        <div class="timeline-container reveal">
+          <div class="timeline-header">
+            <div class="timeline-kicker">THE ARTISANAL JOURNEY</div>
+            <h3 class="timeline-title">From Pond to Pantry</h3>
+            <p class="timeline-subtitle">Five meticulous steps from tranquil Bihar waters to your snacking bowl.</p>
+          </div>
+
+          <div class="timeline-track">
+
+            <!-- Step 1 - Cultivated -->
+            <div class="timeline-step flip-card" aria-label="Step 1: Cultivated" tabindex="0">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <div class="fc-top">
+                    <div class="fc-num">01</div>
+                    <div class="fc-badge">WETLANDS</div>
+                  </div>
+                  <div class="fc-icon">&#x1F30A;</div>
+                  <h4 class="fc-title">Cultivated</h4>
+                  <p class="fc-desc">Grown in chemical-free freshwater wetlands of Mithila, nourished by mountain runoff.</p>
+                  <div class="fc-flip-cue">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6"/><path d="M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+                    Flip to see
+                  </div>
+                </div>
+                <div class="flip-card-back">
+                  <img src="assets/step1-cultivated.png" alt="Makhana cultivation in Mithila wetlands" loading="lazy">
+                  <div class="fc-back-overlay"></div>
+                  <div class="fc-back-content">
+                    <div class="fc-back-tag">01 &middot; WETLANDS</div>
+                    <div class="fc-back-title">Cultivated</div>
+                    <div class="fc-back-fact">
+                      <span class="fc-fact-icon">&#x1F33F;</span>
+                      <span>4,000+ acres of pristine Mithila wetlands</span>
+                    </div>
+                    <div class="fc-back-fact">
+                      <span class="fc-fact-icon">&#x1F4A7;</span>
+                      <span>Zero chemical pesticides used</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2 - Handpicked -->
+            <div class="timeline-step flip-card" aria-label="Step 2: Handpicked" tabindex="0">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <div class="fc-top">
+                    <div class="fc-num">02</div>
+                    <div class="fc-badge">TRADITION</div>
+                  </div>
+                  <div class="fc-icon">&#x1F932;</div>
+                  <h4 class="fc-title">Handpicked</h4>
+                  <p class="fc-desc">Skilled Mallah harvesters dive at sunrise to gently sweep mature seeds from pond beds.</p>
+                  <div class="fc-flip-cue">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6"/><path d="M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+                    Flip to see
+                  </div>
+                </div>
+                <div class="flip-card-back">
+                  <img src="assets/step2-handpick.png" alt="Mallah harvesters handpicking makhana" loading="lazy">
+                  <div class="fc-back-overlay"></div>
+                  <div class="fc-back-content">
+                    <div class="fc-back-tag">02 &middot; TRADITION</div>
+                    <div class="fc-back-title">Handpicked</div>
+                    <div class="fc-back-fact">
+                      <span class="fc-fact-icon">&#x1F305;</span>
+                      <span>Harvested before dawn breaks</span>
+                    </div>
+                    <div class="fc-back-fact">
+                      <span class="fc-fact-icon">&#x1F450;</span>
+                      <span>100% hand-harvested, no machines</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3 - Sun-Dried -->
+            <div class="timeline-step flip-card" aria-label="Step 3: Sun-Dried" tabindex="0">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <div class="fc-top">
+                    <div class="fc-num">03</div>
+                    <div class="fc-badge">SOLAR</div>
+                  </div>
+                  <div class="fc-icon">&#x2600;&#xFE0F;</div>
+                  <h4 class="fc-title">Sun-Dried</h4>
+                  <p class="fc-desc">Graded by pearl size and cured under the warm Mithila sun on handwoven bamboo mats.</p>
+                  <div class="fc-flip-cue">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6"/><path d="M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+                    Flip to see
+                  </div>
+                </div>
+                <div class="flip-card-back">
+                  <img src="assets/step3-sundryed.png" alt="Makhana sun-drying on bamboo mats" loading="lazy">
+                  <div class="fc-back-overlay"></div>
+                  <div class="fc-back-content">
+                    <div class="fc-back-tag">03 &middot; SOLAR</div>
+                    <div class="fc-back-title">Sun-Dried</div>
+                    <div class="fc-back-fact">
+                      <span class="fc-fact-icon">&#x1F324;&#xFE0F;</span>
+                      <span>Natural 48-hr solar drying process</span>
+                    </div>
+                    <div class="fc-back-fact">
+                      <span class="fc-fact-icon">&#x1F38B;</span>
+                      <span>Handwoven bamboo mats, zero plastic</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4 - Roasted -->
+            <div class="timeline-step flip-card" aria-label="Step 4: Roasted" tabindex="0">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <div class="fc-top">
+                    <div class="fc-num">04</div>
+                    <div class="fc-badge">ARTISAN</div>
+                  </div>
+                  <div class="fc-icon">&#x1F525;</div>
+                  <h4 class="fc-title">Roasted</h4>
+                  <p class="fc-desc">Slow wood-fired popping in cast-iron pans for an airy, cloud-like, irresistible crunch.</p>
+                  <div class="fc-flip-cue">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6"/><path d="M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+                    Flip to see
+                  </div>
+                </div>
+                <div class="flip-card-back">
+                  <img src="assets/step4-roasted.jpg" alt="Artisan roasting makhana in cast-iron pan" loading="lazy">
+                  <div class="fc-back-overlay"></div>
+                  <div class="fc-back-content">
+                    <div class="fc-back-tag">04 &middot; ARTISAN</div>
+                    <div class="fc-back-title">Roasted</div>
+                    <div class="fc-back-fact">
+                      <span class="fc-fact-icon">&#x1FAB5;</span>
+                      <span>Wood-fired at 180&#8211;200&#176;C precisely</span>
+                    </div>
+                    <div class="fc-back-fact">
+                      <span class="fc-fact-icon">&#x267B;&#xFE0F;</span>
+                      <span>No oil, no chemicals - just heat</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 5 - Packed -->
+            <div class="timeline-step flip-card" aria-label="Step 5: Packed" tabindex="0">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <div class="fc-top">
+                    <div class="fc-num">05</div>
+                    <div class="fc-badge">HERMETIC</div>
+                  </div>
+                  <div class="fc-icon">&#x1F4E6;</div>
+                  <h4 class="fc-title">Packed</h4>
+                  <p class="fc-desc">Nitrogen-sealed in hermetic pouches to lock freshness from farm to your snacking bowl.</p>
+                  <div class="fc-flip-cue">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6"/><path d="M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+                    Flip to see
+                  </div>
+                </div>
+                <div class="flip-card-back">
+                  <img src="assets/step5-packing.png" alt="Premium makhana hermetically packed fresh" loading="lazy">
+                  <div class="fc-back-overlay"></div>
+                  <div class="fc-back-content">
+                    <div class="fc-back-tag">05 &middot; HERMETIC</div>
+                    <div class="fc-back-title">Packed</div>
+                    <div class="fc-back-fact">
+                      <span class="fc-fact-icon">&#x1F9EA;</span>
+                      <span>N&#8322; flushed &#8212; 9-month shelf life</span>
+                    </div>
+                    <div class="fc-back-fact">
+                      <span class="fc-fact-icon">&#x2705;</span>
+                      <span>FSSAI certified, lab-tested batch</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- SPECIAL SHOWCASE: MITHILA TO MODERN                -->
+    <!-- ================================================== -->
+    <section class="showcase-banner">
+      <div class="showcase-bg-layer" style="background-image: url('assets/editorial-travel.png');">
+        <div class="showcase-overlay"></div>
+      </div>
+      <div class="container showcase-container">
+        <div class="showcase-head reveal">
+          <span class="showcase-label">HERITAGE MEETS CONTEMPORARY ELEGANCE</span>
+          <h2 class="showcase-title">
+            FROM THE PONDS OF MITHILA<br>
+            <span class="italic-serif">TO MODERN TABLES.</span>
+          </h2>
+          <p class="showcase-text">
+            A timeless Indian superfood elevated with culinary sophistication, design reverence, and unwavering ingredient integrity.
+          </p>
+        </div>
+
+        <!-- Horizontal Desktop Cards -->
+        <div class="showcase-cards reveal">
+          <div class="showcase-card">
+            <span class="card-index">01</span>
+            <div class="card-tag">ANCESTRY</div>
+            <h3>Rooted</h3>
+            <p>Cultivated with 2,000 years of indigenous wetland knowledge in pristine Himalayan foothills.</p>
+          </div>
+          <div class="showcase-card">
+            <span class="card-index">02</span>
+            <div class="card-tag">PRECISION</div>
+            <h3>Handpicked</h3>
+            <p>Only the top 15% jumbo grade-A pearls pass our strict size, color, and density standards.</p>
+          </div>
+          <div class="showcase-card">
+            <span class="card-index">03</span>
+            <div class="card-tag">MASTERY</div>
+            <h3>Roasted</h3>
+            <p>Slowly puffed and toasted in extra virgin olive oil and mountain-harvested pink mineral salt.</p>
+          </div>
+          <div class="showcase-card">
+            <span class="card-index">04</span>
+            <div class="card-tag">DIRECT</div>
+            <h3>Delivered</h3>
+            <p>Fresh from roast to your pantry in high-barrier luxury pouches within 48 to 72 hours.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- SECTION 03 - WHY MAKHANA (BENEFITS & NUTRITION)    -->
+    <!-- ================================================== -->
+    <section class="section benefits-section" id="benefits">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-header text-center reveal">
+          <div class="section-kicker">NATURE'S CLEANEST FUEL</div>
+          <h2 class="editorial-heading">
+            MORE THAN A SNACK.<br>
+            <span class="italic-serif">Small in size. Big on goodness.</span>
+          </h2>
+          <p class="section-subtitle">
+            Makhana delivers dense plant nutrients in an effortless, featherlight crunch. Honest sustenance without fillers or deceptive marketing.
+          </p>
+        </div>
+
+        <!-- 6 Premium Benefit Cards -->
+        <div class="benefits-grid">
+          <!-- Benefit 1 -->
+          <article class="benefit-card reveal">
+            <div class="benefit-card-top">
+              <span class="benefit-num">01</span>
+              <div class="benefit-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+              </div>
+            </div>
+            <h3 class="benefit-title">HIGH PROTEIN</h3>
+            <p class="benefit-desc">
+              Packed with 9.7g of bioavailable plant-based amino acids per 100g, supporting lean muscle synthesis, cellular repair, and prolonged satiety.
+            </p>
+            <div class="benefit-tag">9.7g / 100g Bioavailable</div>
+          </article>
+
+          <!-- Benefit 2 -->
+          <article class="benefit-card reveal">
+            <div class="benefit-card-top">
+              <span class="benefit-num">02</span>
+              <div class="benefit-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </div>
+            </div>
+            <h3 class="benefit-title">LOW FAT</h3>
+            <p class="benefit-desc">
+              Naturally negligible saturated fats and strictly zero trans fats. An airy treat that leaves you feeling light, energised, and clear-headed.
+            </p>
+            <div class="benefit-tag">0.1g Saturated Fat</div>
+          </article>
+
+          <!-- Benefit 3 -->
+          <article class="benefit-card reveal">
+            <div class="benefit-card-top">
+              <span class="benefit-num">03</span>
+              <div class="benefit-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M12 3a9 9 0 0 0-9 9c0 4.97 4.03 9 9 9s9-4.03 9-9"></path>
+                  <path d="M12 3v9l6 3"></path>
+                </svg>
+              </div>
+            </div>
+            <h3 class="benefit-title">GLUTEN FREE</h3>
+            <p class="benefit-desc">
+              Inherently grain-free and 100% hypoallergenic. Gentle on the gut microbiome, making it an ideal snack for clean gluten-sensitive lifestyles.
+            </p>
+            <div class="benefit-tag">100% Non-GMO Grain Free</div>
+          </article>
+
+          <!-- Benefit 4 -->
+          <article class="benefit-card reveal">
+            <div class="benefit-card-top">
+              <span class="benefit-num">04</span>
+              <div class="benefit-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="m14 9-4 4 4 4"></path>
+                </svg>
+              </div>
+            </div>
+            <h3 class="benefit-title">LIGHT & CRUNCHY</h3>
+            <p class="benefit-desc">
+              Naturally popped into featherlight spherical clouds. Satisfies deep snacking cravings without heavy vegetable oils or greasy aftertastes.
+            </p>
+            <div class="benefit-tag">Wood-Popped Airy Puff</div>
+          </article>
+
+          <!-- Benefit 5 -->
+          <article class="benefit-card reveal">
+            <div class="benefit-card-top">
+              <span class="benefit-num">05</span>
+              <div class="benefit-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+              </div>
+            </div>
+            <h3 class="benefit-title">RICH IN MINERALS</h3>
+            <p class="benefit-desc">
+              Naturally concentrated in bone-building calcium (60mg), magnesium (210mg), potassium, and natural kaempferol antioxidant polyphenols.
+            </p>
+            <div class="benefit-tag">Magnesium + Calcium + Iron</div>
+          </article>
+
+          <!-- Benefit 6 -->
+          <article class="benefit-card reveal">
+            <div class="benefit-card-top">
+              <span class="benefit-num">06</span>
+              <div class="benefit-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+              </div>
+            </div>
+            <h3 class="benefit-title">EVERYDAY ENERGY</h3>
+            <p class="benefit-desc">
+              Low glycemic index complex carbohydrates yield steady, slow-burn energy without the dreaded insulin spike or afternoon fatigue slump.
+            </p>
+            <div class="benefit-tag">Low Glycemic Index</div>
+          </article>
+        </div>
+
+        <!-- Interactive Nutrition Visualizer & Comparison -->
+        <div class="nutrition-widget reveal">
+          <div class="nutrition-widget-head">
+            <div>
+              <span class="section-kicker">TRANSPARENT SCIENCE</span>
+              <h3>The Macro Comparison (Per 100g)</h3>
+              <p>See how roasted makhana stacks up against common commercial snack options.</p>
+            </div>
+            <div class="comparison-pills">
+              <button type="button" class="compare-btn active" data-snack="makhana">Makhana</button>
+              <button type="button" class="compare-btn" data-snack="chips">Potato Chips</button>
+              <button type="button" class="compare-btn" data-snack="popcorn">Butter Popcorn</button>
+            </div>
+          </div>
+
+          <div class="nutrition-grid">
+            <!-- Metric 1: Calories -->
+            <div class="nutrition-card" data-metric="calories">
+              <div class="nut-card-label">Calories</div>
+              <div class="nut-card-val"><span id="calVal">347</span> <small>kcal</small></div>
+              <div class="nut-meter">
+                <div class="nut-bar" id="calBar" style="width: 65%;"></div>
+              </div>
+              <span class="nut-subtext" id="calSub">Light on daily calorie budget</span>
+            </div>
+
+            <!-- Metric 2: Protein -->
+            <div class="nutrition-card" data-metric="protein">
+              <div class="nut-card-label">Plant Protein</div>
+              <div class="nut-card-val"><span id="protVal">9.7</span> <small>g</small></div>
+              <div class="nut-meter">
+                <div class="nut-bar gold" id="protBar" style="width: 85%;"></div>
+              </div>
+              <span class="nut-subtext" id="protSub">Over 3x higher than potato crisps</span>
+            </div>
+
+            <!-- Metric 3: Fat -->
+            <div class="nutrition-card" data-metric="fat">
+              <div class="nut-card-label">Total Fat</div>
+              <div class="nut-card-val"><span id="fatVal">0.1</span> <small>g</small></div>
+              <div class="nut-meter">
+                <div class="nut-bar green" id="fatBar" style="width: 5%;"></div>
+              </div>
+              <span class="nut-subtext" id="fatSub">Virtually zero saturated fat</span>
+            </div>
+
+            <!-- Metric 4: Carbohydrates -->
+            <div class="nutrition-card" data-metric="carbs">
+              <div class="nut-card-label">Complex Carbs</div>
+              <div class="nut-card-val"><span id="carbVal">76</span> <small>g</small></div>
+              <div class="nut-meter">
+                <div class="nut-bar" id="carbBar" style="width: 76%;"></div>
+              </div>
+              <span class="nut-subtext" id="carbSub">Slow-digesting complex carbs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Infographics Visual Spotlight (Reference Images Showcase) -->
+        <div class="infographic-spotlight reveal">
+          <div class="spotlight-card">
+            <div class="spotlight-visual">
+              <img src="assets/benefits-blue.png" alt="Makhana Superfood Infographic showing heart health, energy, weight loss" class="spotlight-img">
+            </div>
+            <div class="spotlight-body">
+              <div class="spotlight-kicker">INFOGRAPHIC SPOTLIGHT</div>
+              <h3>Makhana: A Superfood Worth The Hype</h3>
+              <p>
+                From maintaining healthy sugar levels to promoting heart vitality and providing bioavailable calcium for bones, see the comprehensive science of this lotus harvest.
+              </p>
+              <button type="button" class="btn btn-outline" id="viewInfographicBtn1">View Full Infographic</button>
+            </div>
+          </div>
+
+          <div class="spotlight-card">
+            <div class="spotlight-visual">
+              <img src="assets/myths-facts.png" alt="Myths vs Facts regarding Makhana as a healthy superfood" class="spotlight-img">
+            </div>
+            <div class="spotlight-body">
+              <div class="spotlight-kicker">MYTHS VS FACTS</div>
+              <h3>Not Just A "Normal" Snack</h3>
+              <p>
+                Common misconceptions place makhana alongside ordinary popped grains. In reality, it stands apart as a protein-dense, gluten-free, low-fat nutritional powerhouse.
+              </p>
+              <button type="button" class="btn btn-outline" id="viewInfographicBtn2">View Full Analysis</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- SECTION 04 - PRODUCT SHOWCASE (Bulk B2B Display)  -->
+    <!-- ================================================== -->
+    <section class="section catalogue-section" id="shop">
+      <div class="container">
+
+        <!-- Section Header -->
+        <div class="catalogue-header reveal">
+          <div class="section-kicker">OUR PRODUCT CATALOGUE</div>
+          <h2 class="editorial-heading">
+            PREMIUM MAKHANA<br>
+            <span class="italic-serif">For Bulk Supply.</span>
+          </h2>
+          <p class="catalogue-subhead">
+            We supply premium-grade makhana products in bulk to retailers, distributors, modern trade, and gift companies across India. Explore our full range below and connect with us for competitive bulk pricing.
+          </p>
+          <a href="bulk-pricing.html" class="btn btn-primary catalogue-cta">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12 19.79 19.79 0 011 3.18a2 2 0 012-2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Enquire for Bulk Orders
+          </a>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="cat-filter-bar reveal" role="tablist" aria-label="Product Categories">
+          <button type="button" class="cat-pill active" data-filter="all">All Products</button>
+          <button type="button" class="cat-pill" data-filter="bhumiik">Bhumiik</button>
+          <button type="button" class="cat-pill" data-filter="wisdom">WisDom</button>
+          <button type="button" class="cat-pill" data-filter="makhana">Makhana</button>
+          <button type="button" class="cat-pill" data-filter="chips">Chips</button>
+        </div>
+
+        <!-- Product Showcase Grid -->
+        <div class="cat-grid reveal" id="catalogueGrid">
+
+          <!-- Card 1: Protein Chocolate Makhana -->
+          <div class="cat-card" data-brand="bhumiik" data-type="makhana">
+            <div class="cat-card-img-wrap">
+              <img src="assets/prod-protein-chocolate.jpg" alt="Bhumiik Protein Chocolate Makhana" class="cat-card-img" loading="lazy">
+              <div class="cat-card-badge">NEW</div>
+              <div class="cat-card-brand-tag">Bhumiik</div>
+            </div>
+            <div class="cat-card-body">
+              <div class="cat-card-tags">
+                <span class="cat-tag">&#x1F36B; Chocolate</span>
+                <span class="cat-tag">&#x1F4AA; High Protein</span>
+              </div>
+              <h3 class="cat-card-name">Protein Chocolate Makhana</h3>
+              <p class="cat-card-desc">The perfect blend of nutrition, crunch, and chocolate joy. Zero cholesterol, super food snack with olive oil.</p>
+              <div class="cat-card-meta">
+                <span class="cat-meta-item">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                  Zero Cholesterol
+                </span>
+                <span class="cat-meta-item">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                  NET WT: 77g
+                </span>
+              </div>
+              <a href="bulk-pricing.html" class="cat-card-btn">
+                Enquire Bulk Price
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 2: Salt & Pepper Makhana -->
+          <div class="cat-card" data-brand="wisdom" data-type="makhana">
+            <div class="cat-card-img-wrap">
+              <img src="assets/prod-salt-pepper.jpg" alt="WisDom Salt and Pepper Makhana" class="cat-card-img" loading="lazy">
+              <div class="cat-card-brand-tag">WisDom</div>
+            </div>
+            <div class="cat-card-body">
+              <div class="cat-card-tags">
+                <span class="cat-tag">&#x2728; Classic</span>
+                <span class="cat-tag">&#x1F33E; Gluten Free</span>
+              </div>
+              <h3 class="cat-card-name">Salt &amp; Pepper Makhana</h3>
+              <p class="cat-card-desc">Simple ingredients, bold taste - guilt-free snacking. High protein, no preservatives, roasted not fried.</p>
+              <div class="cat-card-meta">
+                <span class="cat-meta-item">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                  No Preservatives
+                </span>
+                <span class="cat-meta-item">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                  NET WT: 50g
+                </span>
+              </div>
+              <a href="bulk-pricing.html" class="cat-card-btn">
+                Enquire Bulk Price
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 3: Raw Makhana Chips -->
+          <div class="cat-card" data-brand="wisdom" data-type="chips">
+            <div class="cat-card-img-wrap">
+              <img src="assets/prod-raw-chips.jpg" alt="WisDom Raw Makhana Chips" class="cat-card-img" loading="lazy">
+              <div class="cat-card-badge cat-badge--green">100% Natural</div>
+              <div class="cat-card-brand-tag">WisDom</div>
+            </div>
+            <div class="cat-card-body">
+              <div class="cat-card-tags">
+                <span class="cat-tag">&#x1F37F; Raw Chips</span>
+                <span class="cat-tag">&#x1F3DE;&#xFE0F; Bihar Origin</span>
+              </div>
+              <h3 class="cat-card-name">Raw Makhana Chips</h3>
+              <p class="cat-card-desc">Pure, natural, versatile. 100% Natural Bihar Makhana - rich in plant protein, gluten free, low fat, no preservatives.</p>
+              <div class="cat-card-meta">
+                <span class="cat-meta-item">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                  Plant Protein
+                </span>
+                <span class="cat-meta-item">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                  NET WT: 100g
+                </span>
+              </div>
+              <a href="bulk-pricing.html" class="cat-card-btn">
+                Enquire Bulk Price
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 4: Mint Makhana -->
+          <div class="cat-card" data-brand="bhumiik" data-type="makhana">
+            <div class="cat-card-img-wrap">
+              <img src="assets/prod-mint-makhana.jpg" alt="Bhumiik Mint Makhana" class="cat-card-img" loading="lazy">
+              <div class="cat-card-brand-tag">Bhumiik</div>
+            </div>
+            <div class="cat-card-body">
+              <div class="cat-card-tags">
+                <span class="cat-tag">&#x1F33F; Mint</span>
+                <span class="cat-tag">&#x2744;&#xFE0F; Refreshing</span>
+              </div>
+              <h3 class="cat-card-name">Mint Makhana</h3>
+              <p class="cat-card-desc">Cool. Crunchy. Guilt-Free. Freshness in every crunch - zero cholesterol, super food snack, roasted in olive oil.</p>
+              <div class="cat-card-meta">
+                <span class="cat-meta-item">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                  Zero Cholesterol
+                </span>
+                <span class="cat-meta-item">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                  NET QTY: 18g
+                </span>
+              </div>
+              <a href="bulk-pricing.html" class="cat-card-btn">
+                Enquire Bulk Price
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </div>
+
+
+              <!-- Card 5: Salt & Pepper Makhana -->
+          <div class="cat-card" data-brand="wisdom" data-type="makhana">
+            <div class="cat-card-img-wrap">
+              <img src="assets/prod-salt-pepper.jpg" alt="WisDom Salt and Pepper Makhana" class="cat-card-img" loading="lazy">
+              <div class="cat-card-brand-tag">WisDom</div>
+            </div>
+            <div class="cat-card-body">
+              <div class="cat-card-tags">
+                <span class="cat-tag">&#x2728; Classic</span>
+                <span class="cat-tag">&#x1F33E; Gluten Free</span>
+              </div>
+              <h3 class="cat-card-name">Salt &amp; Pepper Makhana</h3>
+              <p class="cat-card-desc">Simple ingredients, bold taste - guilt-free snacking. High protein, no preservatives, roasted not fried.</p>
+              <div class="cat-card-meta">
+                <span class="cat-meta-item">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                  No Preservatives
+                </span>
+                <span class="cat-meta-item">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                  NET WT: 50g
+                </span>
+              </div>
+              <a href="bulk-pricing.html" class="cat-card-btn">
+                Enquire Bulk Price
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </div>
+
+
+              <!-- Card 6: Salt & Pepper Makhana -->
+          <div class="cat-card" data-brand="wisdom" data-type="makhana">
+            <div class="cat-card-img-wrap">
+              <img src="assets/prod-salt-pepper.jpg" alt="WisDom Salt and Pepper Makhana" class="cat-card-img" loading="lazy">
+              <div class="cat-card-brand-tag">WisDom</div>
+            </div>
+            <div class="cat-card-body">
+              <div class="cat-card-tags">
+                <span class="cat-tag">&#x2728; Classic</span>
+                <span class="cat-tag">&#x1F33E; Gluten Free</span>
+              </div>
+              <h3 class="cat-card-name">Salt &amp; Pepper Makhana</h3>
+              <p class="cat-card-desc">Simple ingredients, bold taste - guilt-free snacking. High protein, no preservatives, roasted not fried.</p>
+              <div class="cat-card-meta">
+                <span class="cat-meta-item">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                  No Preservatives
+                </span>
+                <span class="cat-meta-item">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                  NET WT: 50g
+                </span>
+              </div>
+              <a href="bulk-pricing.html" class="cat-card-btn">
+                Enquire Bulk Price
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </div>
+
+
+              <!-- Card 7: Salt & Pepper Makhana -->
+          <div class="cat-card" data-brand="wisdom" data-type="makhana">
+            <div class="cat-card-img-wrap">
+              <img src="assets/prod-salt-pepper.jpg" alt="WisDom Salt and Pepper Makhana" class="cat-card-img" loading="lazy">
+              <div class="cat-card-brand-tag">WisDom</div>
+            </div>
+            <div class="cat-card-body">
+              <div class="cat-card-tags">
+                <span class="cat-tag">&#x2728; Classic</span>
+                <span class="cat-tag">&#x1F33E; Gluten Free</span>
+              </div>
+              <h3 class="cat-card-name">Salt &amp; Pepper Makhana</h3>
+              <p class="cat-card-desc">Simple ingredients, bold taste - guilt-free snacking. High protein, no preservatives, roasted not fried.</p>
+              <div class="cat-card-meta">
+                <span class="cat-meta-item">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                  No Preservatives
+                </span>
+                <span class="cat-meta-item">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                  NET WT: 50g
+                </span>
+              </div>
+              <a href="bulk-pricing.html" class="cat-card-btn">
+                Enquire Bulk Price
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </div>
+
+
+              <!-- Card 8: Salt & Pepper Makhana -->
+          <div class="cat-card" data-brand="wisdom" data-type="makhana">
+            <div class="cat-card-img-wrap">
+              <img src="assets/prod-salt-pepper.jpg" alt="WisDom Salt and Pepper Makhana" class="cat-card-img" loading="lazy">
+              <div class="cat-card-brand-tag">WisDom</div>
+            </div>
+            <div class="cat-card-body">
+              <div class="cat-card-tags">
+                <span class="cat-tag">&#x2728; Classic</span>
+                <span class="cat-tag">&#x1F33E; Gluten Free</span>
+              </div>
+              <h3 class="cat-card-name">Salt &amp; Pepper Makhana</h3>
+              <p class="cat-card-desc">Simple ingredients, bold taste - guilt-free snacking. High protein, no preservatives, roasted not fried.</p>
+              <div class="cat-card-meta">
+                <span class="cat-meta-item">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                  No Preservatives
+                </span>
+                <span class="cat-meta-item">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                  NET WT: 50g
+                </span>
+              </div>
+              <a href="bulk-pricing.html" class="cat-card-btn">
+                Enquire Bulk Price
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </div>
+
+
+
+          <!-- Card 9: Achari Makhana -->
+          <div class="cat-card" data-brand="bhumiik" data-type="makhana">
+            <div class="cat-card-img-wrap">
+              <img src="assets/prod-achari-makhana.jpg" alt="Bhumiik Achari Makhana" class="cat-card-img" loading="lazy">
+              <div class="cat-card-badge cat-badge--spicy">&#x1F336;&#xFE0F; Spicy</div>
+              <div class="cat-card-brand-tag">Bhumiik</div>
+            </div>
+            <div class="cat-card-body">
+              <div class="cat-card-tags">
+                <span class="cat-tag">&#x1F96D; Achari</span>
+                <span class="cat-tag">&#x1F525; Bold Spice</span>
+              </div>
+              <h3 class="cat-card-name">Achari Makhana</h3>
+              <p class="cat-card-desc">Traditional achar flavour with a modern crunchy twist. Zero cholesterol, super food snack, roasted in olive oil.</p>
+              <div class="cat-card-meta">
+                <span class="cat-meta-item">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                  Olive Oil Roasted
+                </span>
+                <span class="cat-meta-item">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                  NET QTY: 18g
+                </span>
+              </div>
+              <a href="bulk-pricing.html" class="cat-card-btn">
+                Enquire Bulk Price
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <!-- /cat-grid -->
+
+        <!-- Bulk Supply Strip -->
+        <div class="cat-supply-strip reveal">
+          <div class="supply-strip-inner">
+            <div class="supply-icon">&#x1F4E6;</div>
+            <div class="supply-text">
+              <strong>Supplying Pan-India in Bulk</strong>
+              <span>Minimum Order Quantity (MOQ) available for retailers, distributors &amp; corporates. Custom branding &amp; white-label options available.</span>
+            </div>
+            <a href="tel:+916205846653" class="supply-cta">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12 19.79 19.79 0 011 3.18a2 2 0 012-2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              Call Now
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- SECTION 05 - RECIPES                               -->
+    <!-- ================================================== -->
+    <section class="section recipes-section" id="recipes">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="recipes-header reveal">
+          <div>
+            <div class="section-kicker">CULINARY CREATIVITY</div>
+            <h2 class="editorial-heading">
+              CRUNCH IT<br>
+              <span class="italic-serif">YOUR WAY.</span>
+            </h2>
+          </div>
+          <p class="recipes-subtitle">
+            Beyond a solitary snack, makhana is a versatile culinary canvas. Explore six chef-crafted recipes designed for festive gatherings, teatime, and mindful dining.
+          </p>
+        </div>
+
+        <!-- Recipe Cards Grid -->
+        <div class="recipe-grid" id="recipeGrid">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- SECTION 06 - BULK / WHOLESALE (B2B)                -->
+    <!-- ================================================== -->
+    <section class="section bulk-section" id="bulk">
+      <div class="container">
+        <div class="bulk-hero-card reveal">
+          <!-- Left: Bulk Visual with Burlap Sacks & Badges -->
+          <div class="bulk-visual-col">
+            <img src="assets/bulk-orders.png" alt="Bulk orders available jute sack of premium makhana" class="bulk-img">
+            <div class="bulk-visual-badge">
+              <!-- <span class="b-gold">FARM-DIRECT B2B</span> -->
+              <!-- <span class="b-sub">GRADE-A JUMBO 6-SUT</span> -->
+            </div>
+          </div>
+
+          <!-- Right: B2B Overview & Features -->
+          <div class="bulk-copy-col">
+            <div class="section-kicker">ENTERPRISE & WHOLESALE</div>
+            <h2 class="editorial-heading">
+              MAKHANA FOR<br>
+              <span class="italic-serif">EVERY TABLE.</span>
+            </h2>
+            <p class="bulk-subheading">
+              Bulk orders for retailers, caf�s, luxury hotels, corporate wellness programmes, and global exporters.
+            </p>
+
+            <div class="bulk-features-grid">
+              <div class="b-feature">
+                <div class="b-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <strong>Consistent Quality</strong>
+                  <p>Hand-graded 6-sut and 5-sut jumbo pearls with zero moisture content.</p>
+                </div>
+              </div>
+
+              <div class="b-feature">
+                <div class="b-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 14 10"></polyline>
+                  </svg>
+                </div>
+                <div>
+                  <strong>Reliable Supply</strong>
+                  <p>Direct contract farming across 4,000+ acres of Mithila wetlands year-round.</p>
+                </div>
+              </div>
+
+              <div class="b-feature">
+                <div class="b-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                  </svg>
+                </div>
+                <div>
+                  <strong>Custom Packaging</strong>
+                  <p>Private labeling, custom pouches, 10kg/25kg food-grade jute and barrier sacks.</p>
+                </div>
+              </div>
+
+              <div class="b-feature">
+                <div class="b-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+                    <line x1="8" y1="2" x2="8" y2="18"></line>
+                    <line x1="16" y1="6" x2="16" y2="22"></line>
+                  </svg>
+                </div>
+                <div>
+                  <strong>Pan-India Delivery</strong>
+                  <p>Tier-1 temperature-controlled logistics network across 28 states & export ready.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bulk-quote-cta">
+              <a href="#bulkFormCard" class="btn btn-gold" id="scrollBulkBtn">REQUEST BULK QUOTE</a>
+              <span class="direct-call">Direct Hotline: <strong>+91 62058 46653</strong></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Elegant Bulk Inquiry Form -->
+        <div class="bulk-form-wrapper reveal" id="bulkFormCard">
+          <div class="bulk-form-head">
+            <h3>B2B Wholesale Inquiry & Rate Request</h3>
+            <p>Tell us about your requirement and our corporate supply director will respond within 4 business hours.</p>
+          </div>
+
+          <form id="bulkForm" class="bulk-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="bulkName">Full Name *</label>
+                <input type="text" id="bulkName" name="name" placeholder="Vikram Singhania" required>
+                <span class="error-msg">Please enter your name</span>
+              </div>
+              <div class="form-group">
+                <label for="bulkCompany">Business / Enterprise Name *</label>
+                <input type="text" id="bulkCompany" name="company" placeholder="Singhania Hospitality & Cafes" required>
+                <span class="error-msg">Please enter your business name</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="bulkEmail">Official Email *</label>
+                <input type="email" id="bulkEmail" name="email" placeholder="vikram@singhania.in" required>
+                <span class="error-msg">Please enter a valid email</span>
+              </div>
+              <div class="form-group">
+                <label for="bulkPhone">Phone / WhatsApp *</label>
+                <input type="tel" id="bulkPhone" name="phone" placeholder="+91 9341847107" required>
+                <span class="error-msg">Please enter a valid phone number</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="bulkType">Business Type *</label>
+                <select id="bulkType" name="businessType" required>
+                  <option value="" disabled selected>Select Business Category</option>
+                  <option value="Retailer / Supermarket">Retailer / Supermarket Chain</option>
+                  <option value="Cafe / Restaurant">Caf�, Bakery or Fine Dining</option>
+                  <option value="Corporate Gifting">Corporate Gifting / Employee Perks</option>
+                  <option value="Hotel & Hospitality">Luxury Hotel / Resort</option>
+                  <option value="Exporter / Distributor">International Exporter / Wholesaler</option>
+                </select>
+                <span class="error-msg">Please select business category</span>
+              </div>
+              <div class="form-group">
+                <label for="bulkQuantity">Estimated Required Quantity *</label>
+                <select id="bulkQuantity" name="quantity" required>
+                  <option value="" disabled selected>Select Monthly Volume</option>
+                  <option value="50 - 100 kg">50 - 100 kg (Sample & Trial)</option>
+                  <option value="100 - 500 kg">100 - 500 kg (Standard Wholesale)</option>
+                  <option value="500 - 2,000 kg">500 - 2,000 kg (Multi-Outlet Supply)</option>
+                  <option value="2,000+ kg">2,000+ kg (Enterprise / Export Sacks)</option>
+                </select>
+                <span class="error-msg">Please select required quantity</span>
+              </div>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="bulkMessage">Specific Requirements / Custom Blends / Delivery Cities</label>
+              <textarea id="bulkMessage" name="message" rows="3" placeholder="Tell us if you need raw jumbo makhana, roasted peri peri, private labeling, or delivery dates..."></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary btn-submit">
+                <span>SUBMIT BULK INQUIRY</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+              <span class="form-security-note">&#x1F512; Strictly confidential enterprise pricing. No spam guarantee.</span>
+            </div>
+          </form>
+
+          <!-- Success Message State (Hidden initially) -->
+          <div class="bulk-success-state" id="bulkSuccessState" style="display: none;">
+            <div class="success-icon">&#x2705;</div>
+            <h3>Wholesale Inquiry Received!</h3>
+            <p id="bulkSuccessText">
+              Thank you for reaching out. Our enterprise supply desk has logged your request and an official quotation pack has been dispatched to your email.
+            </p>
+            <button type="button" class="btn btn-outline" id="bulkResetBtn">Submit Another Request</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- SECTION 07 - CONTACT & FAQ                         -->
+    <!-- ================================================== -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="contact-header reveal">
+          <div class="section-kicker">DIRECT COMMUNICATIONS</div>
+          <h2 class="editorial-heading">
+            LET'S TALK<br>
+            <span class="italic-serif">MAKHANA.</span>
+          </h2>
+          <p class="contact-subtitle">
+            Whether you are curious about our harvest ponds, interested in a custom gift box, or tracking your order - we are here.
+          </p>
+        </div>
+
+        <div class="contact-layout">
+          <!-- Left: Contact Information Cards -->
+          <div class="contact-info-cards reveal">
+            <div class="info-card">
+              <div class="info-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div>
+                <span class="info-label">EMAIL US</span>
+                <a href="NayaVayapar@gmail.com " class="info-val">NayaVayapar@gmail.com </a>
+                <small>Average response time: &lt; 2 hours</small>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </div>
+              <div>
+                <span class="info-label">PHONE & WHATSAPP</span>
+                <a href="tel:+91 62058 46653" class="info-val">+91 62058 46653</a>
+                <small>Monday - Saturday, 9:00 AM - 7:00 PM IST</small>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div>
+                <span class="info-label">ORIGIN FACILITY</span>
+                <div class="info-val">WARD NO-2 RUPAULI SUPAUL BIHAR 852123 </div>
+                <small>Mithila Wetlands, Bihar - 846004, India</small>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+              </div>
+              <div>
+                <span class="info-label">DESIGN & BRAND STUDIO</span>
+                <div class="info-val">Bandra West, Mumbai</div>
+                <small>Maharashtra - 400050, India</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Real Operations & Ground Work Gallery (30 Images) — Premium GSAP Edition -->
+          <div class="rw-gallery-card" id="realWorkGallery">
+
+            <!-- Cinematic Header -->
+            <div class="rw-card-header">
+              <div class="rw-header-left">
+                <span class="rw-live-badge">
+                  <span class="rw-live-dot"></span>
+                  <span class="rw-live-pulse-ring"></span>
+                  LIVE FROM THE GROUND
+                </span>
+                <h3 class="rw-header-title">Our Real Work <em>in Action</em></h3>
+              </div>
+              <div class="rw-header-right">
+                <div class="rw-counter-badge" id="rwCounter">
+                  <svg width="10" height="10" viewBox="0 0 10 10" class="rw-counter-icon"><circle cx="5" cy="5" r="4" fill="none" stroke="#C9A45C" stroke-width="1.5"/><line x1="5" y1="2" x2="5" y2="5.5" stroke="#C9A45C" stroke-width="1.2" stroke-linecap="round"/><line x1="5" y1="5.5" x2="7" y2="7" stroke="#C9A45C" stroke-width="1.2" stroke-linecap="round"/></svg>
+                  <span class="rw-counter-current" id="rwCurrentNum">01</span>
+                  <span class="rw-counter-sep">/</span>
+                  <span class="rw-counter-total" id="rwTotalNum">30</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Premium Cinematic Stage -->
+            <div class="rw-stage" id="rwStage" aria-label="Real work image slideshow" tabindex="0">
+
+              <!-- Segmented Dot Progress Indicators (top bar replaced with dots) -->
+              <div class="rw-dot-progress" id="rwDotProgress">
+                <!-- Generated by JS -->
+              </div>
+
+              <!-- Main Image with Cinematic Ken Burns -->
+              <div class="rw-image-box">
+                <img id="rwMainImg" src="assets/gallery/work-01.jpg" alt="Bhumiik at AAHAR International Food Expo 2026" class="rw-main-img">
+                <!-- Secondary image for crossfade -->
+                <img id="rwNextImg" src="assets/gallery/work-02.jpg" alt="" class="rw-next-img" aria-hidden="true">
+                <div class="rw-img-overlay"></div>
+                <!-- Shimmer loader shown during image change -->
+                <div class="rw-shimmer" id="rwShimmer"></div>
+              </div>
+
+              <!-- Floating Category Tag Badge with GSAP slide-in -->
+              <div class="rw-stage-badge" id="rwStageTag">
+                <span class="rw-badge-icon" id="rwTagIcon">🏛️</span>
+                <span id="rwTagText">National Expo</span>
+              </div>
+
+              <!-- Slide Number Pill (corner) -->
+              <div class="rw-slide-pill" id="rwSlidePill">
+                <span id="rwSlideNumPill">01</span>
+              </div>
+
+              <!-- Play / Pause Toggle -->
+              <button type="button" class="rw-stage-btn rw-play-btn" id="rwPlayBtn" aria-label="Pause slideshow" title="Pause / Play">
+                <svg id="rwPauseIcon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <rect x="6" y="4" width="4" height="16" rx="1.5"></rect>
+                  <rect x="14" y="4" width="4" height="16" rx="1.5"></rect>
+                </svg>
+                <svg id="rwPlayIcon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
+                  <polygon points="6 3 20 12 6 21 6 3"></polygon>
+                </svg>
+              </button>
+
+              <!-- Cinematic Prev / Next Arrows (always visible, GSAP hover) -->
+              <button type="button" class="rw-nav-arrow rw-arrow-prev" id="rwPrevBtn" aria-label="Previous work photo">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button type="button" class="rw-nav-arrow rw-arrow-next" id="rwNextBtn" aria-label="Next work photo">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+
+              <!-- Premium Caption (Cinematic Lower Third) -->
+              <div class="rw-caption-box">
+                <div class="rw-caption-inner" id="rwCaptionInner">
+                  <div class="rw-caption-line" aria-hidden="true"></div>
+                  <div class="rw-caption-title" id="rwCaptionTitle">Bhumiik at AAHAR International Food Expo 2026</div>
+                  <div class="rw-caption-desc" id="rwCaptionDesc">Showcasing Mithila's heritage Makhana on India's premier national food stage.</div>
+                </div>
+              </div>
+
+              <!-- Thin linear progress bar at bottom of stage -->
+              <div class="rw-progress-track">
+                <div class="rw-progress-bar" id="rwProgressBar"></div>
+              </div>
+            </div>
+
+            <!-- Premium Filmstrip Thumbnails -->
+            <div class="rw-thumb-scroller" id="rwThumbScroller">
+              <div class="rw-thumb-track" id="rwThumbTrack">
+                <!-- Dynamically generated via JS -->
+              </div>
+            </div>
+
+            <!-- Footer Note with animated icon -->
+            <div class="rw-card-footer">
+              <span class="rw-footer-icon">▶</span>
+              <span class="rw-footer-note">Auto &bull; 3.5s &bull; 30 Ground Photos — Click to inspect</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- FAQ Accordion -->
+        <div class="faq-container reveal">
+          <div class="faq-head text-center">
+            <div class="section-kicker">QUESTIONS & ANSWERS</div>
+            <h3 class="faq-title">Frequently Asked Questions</h3>
+          </div>
+
+          <div class="faq-list" id="faqAccordion">
+            <!-- FAQ 1 -->
+            <div class="faq-item">
+              <button type="button" class="faq-question" aria-expanded="false">
+                <span>How long does MAKHANA stay crunchy after opening?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Because our pouches are hermetically nitrogen-flushed and equipped with a heavy-duty resealable zipper, our makhana maintains peak crispness for up to 9 months unopened. Once unsealed, press out excess air and reseal tightly to enjoy fresh crunch for 2 to 3 weeks!
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+              <button type="button" class="faq-question" aria-expanded="false">
+                <span>Are all flavours 100% vegetarian and gluten-free?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes! All our products are 100% vegetarian, naturally gluten-free, and roasted in facilities strictly free from wheat, gluten, peanuts, and artificial preservatives.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+              <button type="button" class="faq-question" aria-expanded="false">
+                <span>What makes Mithila Makhana superior to other varieties?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Mithila in Bihar holds a registered Geographical Indication (GI) tag for makhana. The region's unique perennial wetlands, high mineral silt, and generations-old manual wood-fired roasting produce significantly larger, fluffier, and more nutrient-dense pearls than mass industrial alternatives.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item">
+              <button type="button" class="faq-question" aria-expanded="false">
+                <span>What are the minimum order quantities for bulk wholesale?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Our commercial wholesale starts at 50 kg for custom roast flavors and 100 kg for raw grade-A 6-sut pearls. We offer sample tasting kits for qualified caf�s, hospitality brands, and corporate procurement teams upon request.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================================================== -->
+  <!-- PREMIUM FOOTER                                     -->
+  <!-- ================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <!-- Main Footer Columns -->
+      <div class="footer-main">
+        <!-- Col 1: Brand Info -->
+        <div class="footer-col brand-col">
+          <a href="#home" class="footer-logo">
+            <img
+              src="assets/logo-nayavayapar.png"
+              alt="NayaVayapar - Your Sourcing Partner"
+              class="footer-logo-img"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <p class="footer-tagline">
+            "Ancient Wisdom. Modern Crunch."
+          </p>
+          <p class="footer-bio">
+            Rooted in Mithila, Bihar. We elevate India's traditional sacred lotus crop into a world-class, nutrient-dense luxury snacking experience.
+          </p>
+          <div class="footer-socials">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation Links -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#benefits">Why Makhana</a></li>
+            <li><a href="#shop">Shop Harvest</a></li>
+            <li><a href="#recipes">Kitchen Recipes</a></li>
+            <li><a href="#bulk">Bulk & Wholesale</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Customer Care -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Customer Care</h4>
+          <ul class="footer-links">
+            <li><a href="#contact" class="policy-link" data-policy="shipping">Shipping Policy</a></li>
+            <li><a href="#contact" class="policy-link" data-policy="returns">Returns & Refunds</a></li>
+            <li><a href="#contact" class="policy-link" data-policy="gi">Mithila GI Certification</a></li>
+            <li><a href="#contact" class="policy-link" data-policy="lab">Lab Tested Reports</a></li>
+            <li><a href="#contact" class="policy-link" data-policy="privacy">Privacy Policy</a></li>
+            <li><a href="#contact" class="policy-link" data-policy="terms">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Newsletter -->
+        <div class="footer-col newsletter-col">
+          <h4 class="footer-heading">Get the good stuff.</h4>
+          <p class="newsletter-desc">
+            Receive private harvest drops, seasonal recipes, and a 10% privilege code on your inaugural order.
+          </p>
+          <form id="newsletterForm" class="newsletter-form" novalidate>
+            <div class="newsletter-input-group">
+              <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
+              <button type="submit" class="btn btn-gold-sm" aria-label="Subscribe to newsletter">JOIN</button>
+            </div>
+            <span class="newsletter-feedback" id="newsletterFeedback"></span>
+          </form>
+          <span class="no-spam-note">No spam. Only crunch & wellness insights.</span>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          � 2026 MAKHANA. Crafted with care in India. All Rights Reserved.
+        </div>
+        <div class="footer-bottom-badges">
+          <span>&#x1F33F; 100% Plant Based</span>
+          <span>.</span>
+          <span>&#x1F33E; Naturally Gluten Free</span>
+          <span>.</span>
+          <span>&#x1F3C6; GI Tagged Mithila</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================================================== -->
+  <!-- CART DRAWER                                        -->
+  <!-- ================================================== -->
+  <div class="cart-drawer" id="cartDrawer" aria-hidden="true" role="dialog" aria-label="Shopping Cart">
+    <div class="cart-backdrop" id="cartBackdrop"></div>
+    <div class="cart-panel">
+      <!-- Cart Header -->
+      <div class="cart-header">
+        <div class="cart-title-wrap">
+          <span class="cart-kicker">YOUR SELECTION</span>
+          <h3>Your Basket (<span id="cartCountTitle">0</span>)</h3>
+        </div>
+        <button type="button" class="cart-close-btn" id="cartCloseBtn" aria-label="Close cart">&times;</button>
+      </div>
+
+      <!-- Free Shipping Progress -->
+      <div class="free-shipping-bar">
+        <div class="free-shipping-text" id="freeShippingText">
+          Add ?499 more for <strong>FREE Pan-India Shipping!</strong>
+        </div>
+        <div class="shipping-meter">
+          <div class="shipping-fill" id="shippingFill" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- Cart Items Container -->
+      <div class="cart-items" id="cartItemsContainer">
+        <!-- Rendered dynamically via JS -->
+      </div>
+
+      <!-- Cart Footer & Summary -->
+      <div class="cart-footer" id="cartFooter">
+        <!-- Promo Code Input -->
+        <div class="promo-box">
+          <input type="text" id="promoInput" placeholder="Promo code (e.g. CRUNCH10)" uppercase>
+          <button type="button" id="applyPromoBtn" class="btn-promo">Apply</button>
+        </div>
+        <div id="promoFeedback" class="promo-feedback"></div>
+
+        <!-- Totals Breakdown -->
+        <div class="cart-totals">
+          <div class="total-row">
+            <span>Subtotal</span>
+            <span id="cartSubtotal">?0</span>
+          </div>
+          <div class="total-row discount-row" id="discountRow" style="display: none;">
+            <span>Discount (10%)</span>
+            <span id="cartDiscount">-?0</span>
+          </div>
+          <div class="total-row">
+            <span>Shipping</span>
+            <span id="cartShipping">?60</span>
+          </div>
+          <div class="total-row grand-total">
+            <span>Total</span>
+            <strong id="cartGrandTotal">?0</strong>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-block checkout-btn" id="checkoutBtn">
+          <span>PROCEED TO CHECKOUT</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+        <span class="safe-checkout-note">&#x1F512; Guaranteed Secure Checkout &middot; UPI, Cards &amp; COD</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================== -->
+  <!-- PRODUCT QUICK-VIEW MODAL                           -->
+  <!-- ================================================== -->
+  <div class="modal-overlay" id="quickViewModal" aria-hidden="true" role="dialog" aria-label="Product Quick View">
+    <div class="modal-backdrop" id="quickViewBackdrop"></div>
+    <div class="modal-card quick-view-card">
+      <button type="button" class="modal-close-btn" id="quickViewClose" aria-label="Close modal">&times;</button>
+      <div class="quick-view-grid" id="quickViewContent">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================== -->
+  <!-- RECIPE DETAIL MODAL                                -->
+  <!-- ================================================== -->
+  <div class="modal-overlay" id="recipeModal" aria-hidden="true" role="dialog" aria-label="Recipe Details">
+    <div class="modal-backdrop" id="recipeBackdrop"></div>
+    <div class="modal-card recipe-modal-card">
+      <button type="button" class="modal-close-btn" id="recipeModalClose" aria-label="Close modal">&times;</button>
+      <div class="recipe-modal-body" id="recipeModalContent">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================== -->
+  <!-- INFOGRAPHIC IMAGE MODAL                            -->
+  <!-- ================================================== -->
+  <div class="modal-overlay" id="infographicModal" aria-hidden="true" role="dialog" aria-label="Infographic Full View">
+    <div class="modal-backdrop" id="infographicBackdrop"></div>
+    <div class="modal-card infographic-modal-card">
+      <button type="button" class="modal-close-btn" id="infographicClose" aria-label="Close modal">&times;</button>
+      <div class="infographic-body" id="infographicModalContent">
+        <img src="" alt="Makhana Infographic" id="infographicModalImg" class="infographic-full-img">
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================== -->
+  <!-- SIMULATED CHECKOUT CONFIRMATION MODAL              -->
+  <!-- ================================================== -->
+  <div class="modal-overlay" id="checkoutModal" aria-hidden="true" role="dialog" aria-label="Order Confirmation">
+    <div class="modal-backdrop" id="checkoutBackdrop"></div>
+    <div class="modal-card checkout-modal-card">
+      <button type="button" class="modal-close-btn" id="checkoutClose" aria-label="Close modal">&times;</button>
+      <div class="checkout-modal-body text-center">
+        <div class="celebration-icon">&#x1F389;</div>
+        <span class="checkout-badge">ORDER SIMULATION SUCCESS</span>
+        <h3 class="checkout-title">Your Mithila Harvest Is On Its Way!</h3>
+        <p class="checkout-text">
+          In this frontend demonstration, your order has been simulated successfully. In production, this seamlessly connects to Razorpay / Stripe / Shopify API.
+        </p>
+        <div class="order-summary-box" id="checkoutSummaryBox">
+          <!-- Summary injected via JS -->
+        </div>
+        <button type="button" class="btn btn-primary" id="checkoutDoneBtn">Continue Snacking</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================== -->
+  <!-- FLOATING TOAST NOTIFICATION CONTAINER              -->
+  <!-- ================================================== -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- ================================================== -->
+  <!-- BACK TO TOP BUTTON                                 -->
+  <!-- ================================================== -->
+  <button type="button" class="back-to-top" id="backToTopBtn" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>  <!-- ================================================== -->
+  <!-- FLOATING WHATSAPP BUTTON                           -->
+  <!-- ================================================== -->
+  <a
+    href="https://wa.me/916205846653?text=Hello%20I%20am%20interested%20in%20your%20business"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="floating-wa-btn"
+    id="floatingWaBtn"
+    aria-label="Chat on WhatsApp"
+    title="Chat on WhatsApp"
+  >
+    <!-- WhatsApp Official SVG -->
+    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    <!-- Tooltip label -->
+    <span class="floating-wa-tooltip">Chat on WhatsApp</span>
+  </a>
+
+
+
+
+  <!-- Main JavaScript File -->
+  <script src="script.js?v=2.2"></script>
+
+  <!-- Makhana Pop - Premium Click Interaction Layer -->
+  <script src="makhana-fx.js" defer></script>
+
+  <!-- Bulk Order Chatbot -->
+  <script src="chatbot.js" defer></script>
+</body>
+</html>
