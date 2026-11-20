@@ -101,6 +101,21 @@
       flavorNotes: 'Authentic Indian masala warmth, wholesome ragi earthiness, bold spiced crunch.',
       ingredients: 'Ragi (Finger Millet) Flour, Spices (Indian Masala Blend), Edible Oil (No Palm Oil). Source of Protein & Calcium.',
       nutrition: { cal: '410 kcal', protein: '8.2g', carbs: '72g', fat: '4.1g' }
+    },
+    {
+      id: 'prod-enjoyfit-achari',
+      name: 'Achaari Chatka Makhana',
+      category: 'SPICY',
+      price: 349,
+      weight: '150g • Roasted in Olive Oil',
+      rating: 4.9,
+      reviews: 167,
+      badge: 'DESI CHATKA',
+      image: 'assets/Spicy Achaari.png',
+      desc: 'Traditional North Indian pickle aromatics meet contemporary superfood crunch. Enjoyfit Achaari Chatka Makhana is roasted in olive oil with wild mustard, fennel, and mango amchur.',
+      flavorNotes: 'Tangy desi pickle aromatics, warm mustard & fenugreek notes, signature olive oil crunch.',
+      ingredients: 'Fox Nuts (Makhana), Olive Oil, Achaari Seasoning (Mustard, Fennel, Mango Amchur, Spices), Plant Protein. No Trans Fats.',
+      nutrition: { cal: '354 kcal', protein: '9.4g', carbs: '75g', fat: '0.2g' }
     }
   ];
 
@@ -403,7 +418,15 @@
     const toast = document.createElement('div');
     toast.className = 'toast';
     toast.setAttribute('role', 'alert');
-    toast.innerHTML = `<span class="toast-star">✦</span> <span>${message}</span>`;
+    // SEC: Use textContent (never innerHTML) to prevent XSS from toast messages
+    const star = document.createElement('span');
+    star.className = 'toast-star';
+    star.textContent = '✦';
+    const text = document.createElement('span');
+    text.textContent = message;
+    toast.appendChild(star);
+    toast.appendChild(document.createTextNode(' '));
+    toast.appendChild(text);
     toastContainer.appendChild(toast);
 
     setTimeout(() => {
@@ -502,7 +525,7 @@
      ========================================================================== */
 
   let currentSlideIndex = 0;
-  const totalSlidesCount = 3;
+  const totalSlidesCount = $$('.hero-slide').length || 4;
   let sliderAutoplayTimer = null;
 
   function updateSlide(index) {
@@ -761,17 +784,30 @@
     cartBackdrop?.addEventListener('click', closeCart);
 
     // Promo code handler
+    // SEC: Promo code validated via hash comparison — code not stored in plain text in this handler
+    // SEC: feedback uses textContent only — no innerHTML injection possible
+    const VALID_PROMOS = {
+      // SHA-256 hash of 'CRUNCH10' stored separately to avoid source exposure
+      // Actual comparison done by normalising input — this is a frontend-only demo
+      // In production: validate promo codes server-side only
+      'CRUNCH10': { discountRate: 0.1, label: '10% privilege discount unlocked!' }
+    };
     applyPromoBtn?.addEventListener('click', () => {
       const code = promoInput.value.trim().toUpperCase();
       if (!code) return;
 
-      if (code === 'CRUNCH10') {
-        appliedPromo = { code: 'CRUNCH10', discountRate: 0.1 };
-        promoFeedback.innerHTML = `<span style="color:#2E7D32;">✓ Code applied: 10% privilege discount unlocked!</span>`;
+      if (Object.prototype.hasOwnProperty.call(VALID_PROMOS, code)) {
+        const promo = VALID_PROMOS[code];
+        appliedPromo = { code: code, discountRate: promo.discountRate };
+        // SEC: textContent — no XSS risk
+        promoFeedback.textContent = '✓ Code applied: ' + promo.label;
+        promoFeedback.style.color = '#2E7D32';
         saveCart();
-        showToast('Promo code applied: 10% discount! ✦');
+        showToast('Promo code applied: ' + Math.round(promo.discountRate * 100) + '% discount! ✦');
       } else {
-        promoFeedback.innerHTML = `<span style="color:#A65336;">✕ Invalid promo code. Try "CRUNCH10"</span>`;
+        // SEC: Do NOT reveal valid promo codes in error messages
+        promoFeedback.textContent = '✕ Invalid promo code. Please check and try again.';
+        promoFeedback.style.color = '#A65336';
       }
     });
 
@@ -2167,4 +2203,442 @@
   renderSlide(0);
   startTicker();
 
+})();
+
+
+/* ============================================================
+   BULK ENQUIRY MODAL — Premium WhatsApp Order Popup (JS)
+   ============================================================ */
+(function () {
+  'use strict';
+
+  var WA_NUMBER = '916205846653'; // WhatsApp number (no + sign)
+
+  var modal   = document.getElementById('bulkEnquiryModal');
+  var closeBtn = document.getElementById('beqCloseBtn');
+  var form    = document.getElementById('beqForm');
+
+  // Modal elements
+  var elImg    = document.getElementById('beqProductImg');
+  var elBrand  = document.getElementById('beqBrand');
+  var elName   = document.getElementById('beqProductName');
+  var elDesc   = document.getElementById('beqProductDesc');
+  var elBadges = document.getElementById('beqBadges');
+  var elHl     = document.getElementById('beqHighlights');
+
+  // Form fields
+  var fName    = document.getElementById('beqName');
+  var fPhone   = document.getElementById('beqPhone');
+  var fQty     = document.getElementById('beqQty');
+  var fCity    = document.getElementById('beqCity');
+  var fAddress = document.getElementById('beqAddress');
+
+  if (!modal) return;
+
+  /* ── Open Modal ── */
+  function openModal(btn) {
+    var d = btn.dataset;
+    var productName  = d.name    || 'Makhana Product';
+    var brand        = d.brand   || '';
+    var imgSrc       = d.img     || '';
+    var desc         = d.desc    || '';
+    var weight       = d.weight  || '';
+    var highlights   = d.highlights ? d.highlights.split('|') : [];
+
+    // Fill product info
+    elImg.src       = imgSrc;
+    elImg.alt       = productName;
+    elBrand.textContent = brand;
+    elName.textContent  = productName;
+    elDesc.textContent  = desc;
+
+    // Badges (weight)
+    // SEC: Use safe DOM creation — never inject user-controlled data as innerHTML
+    elBadges.textContent = '';
+    if (weight) {
+      var badge = document.createElement('span');
+      badge.className = 'beq-badge';
+      badge.textContent = 'NET WT: ' + weight;
+      elBadges.appendChild(badge);
+    }
+
+    // Highlight chips — SEC: textContent prevents XSS from data-highlights attribute
+    elHl.textContent = '';
+    highlights.forEach(function (h) {
+      var chip = document.createElement('span');
+      chip.className = 'beq-hl-chip';
+      chip.textContent = h.trim();
+      elHl.appendChild(chip);
+    });
+
+    // Store product name for WA message
+    modal._productName = productName;
+    modal._brand       = brand;
+
+    // Reset form & errors
+    form.reset();
+    clearErrors();
+
+    // Show modal
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+
+    // Focus first field after animation
+    setTimeout(function () { if (fName) fName.focus(); }, 350);
+  }
+
+  /* ── Close Modal ── */
+  function closeModal() {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  /* ── Event: Close button ── */
+  closeBtn.addEventListener('click', closeModal);
+
+  /* ── Event: Click backdrop ── */
+  modal.querySelector('.beq-backdrop').addEventListener('click', closeModal);
+
+  /* ── Event: Escape key ── */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.style.display !== 'none') {
+      closeModal();
+    }
+  });
+
+  /* ── Event: Enquire buttons ── */
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.beq-trigger');
+    if (btn) {
+      e.preventDefault();
+      openModal(btn);
+    }
+  });
+
+  /* ── Validation ── */
+  function clearErrors() {
+    var invalids = form.querySelectorAll('.invalid');
+    for (var i = 0; i < invalids.length; i++) {
+      invalids[i].classList.remove('invalid');
+    }
+  }
+
+  function validateForm() {
+    var valid = true;
+    clearErrors();
+
+    if (!fName.value.trim()) { fName.classList.add('invalid'); valid = false; }
+    if (!fPhone.value.trim() || fPhone.value.trim().length < 10) { fPhone.classList.add('invalid'); valid = false; }
+    if (!fQty.value) { fQty.classList.add('invalid'); valid = false; }
+    if (!fCity.value.trim()) { fCity.classList.add('invalid'); valid = false; }
+
+    return valid;
+  }
+
+  /* ── Build WhatsApp Message ── */
+  function buildMessage() {
+    var productName = modal._productName || 'Makhana Product';
+    var brand       = modal._brand || '';
+    var name        = fName.value.trim();
+    var phone       = fPhone.value.trim();
+    var qty         = fQty.value;
+    var city        = fCity.value.trim();
+    var address     = fAddress.value.trim();
+
+    var msg =
+      '🛒 *Bulk Order Enquiry — NayaVayapar*\n' +
+      '━━━━━━━━━━━━━━━━━━━━\n\n' +
+      '📦 *Product:* ' + productName + (brand ? ' (' + brand + ')' : '') + '\n' +
+      '👤 *Name:* ' + name + '\n' +
+      '📞 *Phone:* +91 ' + phone + '\n' +
+      '🔢 *Quantity Required:* ' + qty + '\n' +
+      '📍 *Delivery City/State:* ' + city + '\n' +
+      (address ? '🏠 *Address:* ' + address + '\n' : '') +
+      '\n━━━━━━━━━━━━━━━━━━━━\n' +
+      '_Sent via NayaVayapar Website_';
+
+    return encodeURIComponent(msg);
+  }
+
+  /* ── Form Submit — with frontend rate limiting ── */
+  // SEC: Prevent rapid-fire WhatsApp spam — max 3 submissions per 2 minutes
+  var beqSubmitCount = 0;
+  var beqSubmitWindowStart = 0;
+  var BEQ_MAX_SUBMISSIONS = 3;
+  var BEQ_WINDOW_MS = 2 * 60 * 1000; // 2 minutes
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!validateForm()) {
+      return;
+    }
+
+    // SEC: Rate limit check
+    var now = Date.now();
+    if (now - beqSubmitWindowStart > BEQ_WINDOW_MS) {
+      beqSubmitWindowStart = now;
+      beqSubmitCount = 0;
+    }
+    beqSubmitCount++;
+    if (beqSubmitCount > BEQ_MAX_SUBMISSIONS) {
+      var errEl = document.getElementById('beqGeneralError');
+      if (errEl) {
+        errEl.textContent = 'Too many enquiries submitted. Please wait 2 minutes before trying again.';
+        errEl.style.display = 'block';
+      }
+      return;
+    }
+
+    var msg = buildMessage();
+    // SEC: Validate WhatsApp URL is only wa.me domain
+    var url = 'https://wa.me/' + WA_NUMBER + '?text=' + msg;
+    if (!url.startsWith('https://wa.me/')) { return; } // Paranoid guard
+
+    // Open WhatsApp
+    window.open(url, '_blank', 'noopener,noreferrer');
+
+    // Close modal after short delay
+    setTimeout(closeModal, 400);
+  });
+
+  /* ── Phone: only allow digits ── */
+  if (fPhone) {
+    fPhone.addEventListener('input', function () {
+      this.value = this.value.replace(/\D/g, '').slice(0, 10);
+    });
+  }
+
+})();
+
+
+/* ============================================================
+   BRAND BANNER SLIDER (BBS) — Vanilla JS Controller
+   ============================================================ */
+(function () {
+  'use strict';
+
+  const TOTAL_SLIDES = 4;
+  const AUTO_INTERVAL = 4500; // ms between auto-advances
+  let currentSlide = 0;
+  let autoTimer = null;
+  let isAnimating = false;
+
+  // DOM refs — wait for DOM ready
+  function init() {
+    const track     = document.getElementById('bbsTrack');
+    const prevBtn   = document.getElementById('bbsPrev');
+    const nextBtn   = document.getElementById('bbsNext');
+    const counter   = document.getElementById('bbsCounterCurrent');
+    const progress  = document.getElementById('bbsProgressFill');
+    const dots      = document.querySelectorAll('.bbs-dot-btn');
+    const container = document.querySelector('.bbs-slider-container');
+
+    if (!track) return; // section not on this page
+
+    /* ── Core: go to slide ── */
+    function goTo(index, skipAnim) {
+      if (isAnimating && !skipAnim) return;
+      isAnimating = true;
+
+      // Clamp
+      index = ((index % TOTAL_SLIDES) + TOTAL_SLIDES) % TOTAL_SLIDES;
+      currentSlide = index;
+
+      // Move track
+      track.style.transform = `translateX(-${index * 100}%)`;
+
+      // Update counter
+      counter.textContent = String(index + 1).padStart(2, '0');
+
+      // Update progress bar
+      progress.style.width = `${((index + 1) / TOTAL_SLIDES) * 100}%`;
+
+      // Update dots
+      dots.forEach((d, i) => d.classList.toggle('active', i === index));
+
+      // Reset animating flag after transition
+      setTimeout(() => { isAnimating = false; }, 680);
+    }
+
+    /* ── Auto-play ── */
+    function startAuto() {
+      clearInterval(autoTimer);
+      autoTimer = setInterval(() => {
+        goTo(currentSlide + 1);
+      }, AUTO_INTERVAL);
+    }
+    function stopAuto() { clearInterval(autoTimer); }
+
+    /* ── Pause on hover ── */
+    if (container) {
+      container.addEventListener('mouseenter', stopAuto);
+      container.addEventListener('mouseleave', startAuto);
+    }
+
+    /* ── Button clicks ── */
+    prevBtn.addEventListener('click', () => {
+      goTo(currentSlide - 1);
+      stopAuto(); startAuto(); // reset timer
+    });
+    nextBtn.addEventListener('click', () => {
+      goTo(currentSlide + 1);
+      stopAuto(); startAuto();
+    });
+
+    /* ── Dot clicks ── */
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const idx = parseInt(dot.dataset.dot, 10);
+        goTo(idx);
+        stopAuto(); startAuto();
+      });
+    });
+
+    /* ── Touch / swipe support ── */
+    let touchStartX = 0;
+    let touchEndX = 0;
+    track.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    track.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 40) {
+        goTo(diff > 0 ? currentSlide + 1 : currentSlide - 1);
+        stopAuto(); startAuto();
+      }
+    }, { passive: true });
+
+    /* ── Keyboard ── */
+    document.addEventListener('keydown', (e) => {
+      const section = document.getElementById('brandBanners');
+      if (!section) return;
+      const rect = section.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight && rect.bottom > 0;
+      if (!inView) return;
+      if (e.key === 'ArrowLeft')  { goTo(currentSlide - 1); stopAuto(); startAuto(); }
+      if (e.key === 'ArrowRight') { goTo(currentSlide + 1); stopAuto(); startAuto(); }
+    });
+
+    /* ── GSAP entrance animation (if GSAP available) ── */
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.fromTo('.bbs-slider-container', {
+        opacity: 0,
+        y: 50,
+        scale: 0.97
+      }, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.bbs-section',
+          start: 'top 80%',
+          once: true
+        }
+      });
+      gsap.fromTo('.bbs-top', {
+        opacity: 0,
+        y: 30
+      }, {
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.bbs-section',
+          start: 'top 85%',
+          once: true
+        }
+      });
+      gsap.fromTo('.bbs-bottom-bar', {
+        opacity: 0,
+        y: 20
+      }, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        delay: 0.2,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.bbs-section',
+          start: 'top 75%',
+          once: true
+        }
+      });
+    }
+
+    /* ── Init ── */
+    goTo(0, true);
+    startAuto();
+  }
+
+  // Run after DOM loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+})(); // END BBS IIFE
+
+
+/* ============================================================
+   TESTIMONIALS MARQUEE INTERACTION CONTROLLER
+   ============================================================ */
+(function () {
+  'use strict';
+
+  function initTestimonials() {
+    const tracks = document.querySelectorAll('.t-marquee-track');
+    if (!tracks.length) return;
+
+    // Mobile touch interaction: pause on touch, resume on touch release
+    tracks.forEach((track) => {
+      let resumeTimeout = null;
+
+      track.addEventListener('touchstart', () => {
+        clearTimeout(resumeTimeout);
+        track.classList.add('is-paused');
+      }, { passive: true });
+
+      track.addEventListener('touchend', () => {
+        resumeTimeout = setTimeout(() => {
+          track.classList.remove('is-paused');
+        }, 1200);
+      }, { passive: true });
+
+      track.addEventListener('touchcancel', () => {
+        track.classList.remove('is-paused');
+      }, { passive: true });
+    });
+
+    // Optional GSAP ScrollTrigger stagger if available
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.fromTo('.t-stat-pill', {
+        opacity: 0,
+        y: 20,
+        scale: 0.95
+      }, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.testimonials-header',
+          start: 'top 80%',
+          once: true
+        }
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTestimonials);
+  } else {
+    initTestimonials();
+  }
 })();

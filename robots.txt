@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /backend/
+Disallow: /scratch/
+Disallow: /api/
+Disallow: /.env
+Disallow: /.git/
+
+Sitemap: https://nayavayapar.com/sitemap.xml

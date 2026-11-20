@@ -2,6 +2,9 @@
 node_modules/
 package-lock.json
 
+# Scratch / temp working files
+scratch/
+
 # Environment variables & secrets
 .env
 .env.*

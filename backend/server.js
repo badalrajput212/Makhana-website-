@@ -35,17 +35,24 @@ app.use(helmet({
 /* ── CORS ──────────────────────────────────────────────────── */
 const ALLOWED_ORIGINS = (process.env.CORS_ALLOWED_ORIGINS || 'http://localhost:3000,http://127.0.0.1:5500,http://127.0.0.1:5501')
   .split(',')
-  .map(o => o.trim());
+  .map(o => o.trim())
+  .filter(Boolean);
 
 app.use(cors({
   origin: (origin, callback) => {
-    // Allow requests with no origin (e.g. local file, Postman)
-    if (!origin) return callback(null, true);
+    // SEC: In production, reject requests with no Origin header to prevent
+    // server-to-server abuse. In development, allow no-origin for Postman/curl.
+    if (!origin) {
+      if (process.env.NODE_ENV === 'production') {
+        return callback(new Error('CORS: Origin header required in production'));
+      }
+      return callback(null, true); // Allow in dev/test only
+    }
     if (ALLOWED_ORIGINS.includes(origin)) return callback(null, true);
     callback(new Error(`CORS: Origin ${origin} not permitted`));
   },
   methods:          ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders:   ['Content-Type', 'Authorization'],
+  allowedHeaders:   ['Content-Type', 'X-Admin-Key'],
   credentials:      false,
 }));
 
@@ -416,10 +423,11 @@ app.post('/api/bulk-order', orderLimiter, orderValidationRules, async (req, res)
     responsePayload.emailError = emailError; // Only expose in dev
   }
 
-  // 7 — Log for audit trail (console only — replace with DB in production)
+  // 7 — Log for audit trail (SEC: PII redacted from logs — full data saved in orderStore)
+  // In production: replace with structured logging to a secure log service (not console)
   console.log('[Order Saved]', JSON.stringify({
     enquiryId:   order.enquiryId,
-    customer:    `${order.customer.name} / ${order.customer.phone}`,
+    customerRef: `${order.customer.name.charAt(0)}*** / ***${order.customer.phone.slice(-4)}`, // SEC: Partial PII only
     products:    order.products.length,
     totalAmount: order.totalAmount,
     emailSent,

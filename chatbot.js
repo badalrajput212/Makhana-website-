@@ -22,6 +22,22 @@
   };
 
   /* =========================================================================
+     SECURITY UTILITY — HTML escaping
+     Prevents XSS when user-controlled text is inserted into HTML templates.
+     Use esc(userInput) everywhere a user-typed value enters innerHTML.
+     ========================================================================= */
+  function esc(str) {
+    if (str == null) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#x27;')
+      .replace(/`/g, '&#x60;');
+  }
+
+  /* =========================================================================
      SECTION B — PRODUCT DATA (mirrored from script.js PRODUCTS_DATA)
      Each product has variants (pack sizes). Expand as needed.
      ========================================================================= */
@@ -500,10 +516,19 @@
     bubble.className = 'chatbot-bubble';
 
     if (isHTML) {
+      // SEC: isHTML=true only used for bot-generated HTML templates (buildSummaryHTML, etc.)
+      // All user data inside those templates MUST be escaped with esc() before insertion
       bubble.innerHTML = content;
     } else {
-      // Convert newlines to <br> and preserve text
-      bubble.innerHTML = content.replace(/\n/g, '<br>');
+      // SEC: User-typed content — NEVER use innerHTML directly.
+      // Split on \n and insert as text nodes with <br> between them.
+      const lines = String(content).split('\n');
+      lines.forEach(function(line, i) {
+        bubble.appendChild(document.createTextNode(line));
+        if (i < lines.length - 1) {
+          bubble.appendChild(document.createElement('br'));
+        }
+      });
     }
 
     const ts = document.createElement('div');
@@ -1013,10 +1038,11 @@
     items.forEach(item => {
       const subtotal = item.variant.price * item.qty;
       grandTotal += subtotal;
+      // SEC: esc() applied to product names (from internal data, but defensive)
       productsRows += `
         <div class="chatbot-summary-product-row chatbot-summary-row">
-          <span class="label">${getProductName(item.product)}</span>
-          <span class="value">${item.qty} × ₹${item.variant.price} = ₹${subtotal}</span>
+          <span class="label">${esc(getProductName(item.product))}</span>
+          <span class="value">${esc(String(item.qty))} × ₹${esc(String(item.variant.price))} = ₹${subtotal}</span>
         </div>`;
     });
 
@@ -1024,19 +1050,19 @@
       <div class="chatbot-summary">
         <div class="chatbot-summary-header">
           ${svgIcon('summary')}
-          <div class="chatbot-summary-title">${t('summaryTitle')}</div>
+          <div class="chatbot-summary-title">${esc(t('summaryTitle'))}</div>
         </div>
         <div class="chatbot-summary-body">
-          <div class="chatbot-summary-id">${t('summaryOrderId')}: ${state.orderEnquiryId}</div>
+          <div class="chatbot-summary-id">${esc(t('summaryOrderId'))}: ${esc(state.orderEnquiryId)}</div>
 
           <div class="chatbot-summary-row">
-            <span class="label">${t('summaryLang')}</span>
-            <span class="value">${lang}</span>
+            <span class="label">${esc(t('summaryLang'))}</span>
+            <span class="value">${esc(lang)}</span>
           </div>
           <div class="chatbot-summary-divider"></div>
 
           <div class="chatbot-summary-row">
-            <span class="label">${t('summaryProducts')}</span>
+            <span class="label">${esc(t('summaryProducts'))}</span>
           </div>
           ${productsRows}
           <div class="chatbot-summary-row" style="font-weight:700;">
@@ -1046,27 +1072,27 @@
           <div class="chatbot-summary-divider"></div>
 
           <div class="chatbot-summary-row">
-            <span class="label">${t('summaryName')}</span>
-            <span class="value">${cd.name || '—'}</span>
+            <span class="label">${esc(t('summaryName'))}</span>
+            <span class="value">${esc(cd.name || '—')}</span>
           </div>
           <div class="chatbot-summary-row">
-            <span class="label">${t('summaryPhone')}</span>
-            <span class="value">${cd.phone || '—'}</span>
+            <span class="label">${esc(t('summaryPhone'))}</span>
+            <span class="value">${esc(cd.phone || '—')}</span>
           </div>
           <div class="chatbot-summary-row">
-            <span class="label">${t('summaryAddress')}</span>
-            <span class="value">${cd.address || '—'}, ${cd.city || ''}, ${cd.state || ''} - ${cd.pin || ''}</span>
+            <span class="label">${esc(t('summaryAddress'))}</span>
+            <span class="value">${esc(cd.address || '—')}, ${esc(cd.city || '')}, ${esc(cd.state || '')} - ${esc(cd.pin || '')}</span>
           </div>
           ${cd.email ? `<div class="chatbot-summary-row">
-            <span class="label">${t('summaryEmail')}</span>
-            <span class="value">${cd.email}</span>
+            <span class="label">${esc(t('summaryEmail'))}</span>
+            <span class="value">${esc(cd.email)}</span>
           </div>` : ''}
           <div class="chatbot-summary-row">
-            <span class="label">${t('summaryDate')}</span>
-            <span class="value">${now}</span>
+            <span class="label">${esc(t('summaryDate'))}</span>
+            <span class="value">${esc(now)}</span>
           </div>
 
-          <div class="chatbot-disclaimer">${t('disclaimer')}</div>
+          <div class="chatbot-disclaimer">${esc(t('disclaimer'))}</div>
         </div>
       </div>`;
   }
