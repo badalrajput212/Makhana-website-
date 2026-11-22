@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -3375,27 +3375,49 @@
         const name   = (document.getElementById('fbName') || {}).value || '';
         const email  = (document.getElementById('fbEmail') || {}).value || '';
 
-        // Send to WhatsApp (fallback — no backend needed)
-        const wa = 'https://wa.me/916205846653?text='
-          + encodeURIComponent(
-              '📋 *New Website Feedback*\n'
-            + '⭐ Rating: ' + (rating ? rating + '/5' : 'Not rated') + '\n'
-            + '📌 Category: ' + (cat || 'General') + '\n'
-            + '👤 Name: ' + (name || 'Anonymous') + '\n'
-            + '📧 Email: ' + (email || 'Not provided') + '\n'
-            + '💬 Feedback:\n' + msg
-          );
-
-        // Animate button
+        // Animate button — loading state
         submitBtn.disabled = true;
         submitBtn.classList.add('loading');
-        setTimeout(function(){
+        submitBtn.querySelector('.fb-btn-text').textContent = 'Sending...';
+
+        // ── 1. Try Backend API (auto-email to owner) ──
+        var apiBase = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+          ? 'http://localhost:3001'
+          : ''; // same-origin when served by backend
+
+        fetch(apiBase + '/api/feedback', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: name, email: email, rating: rating, category: cat, message: msg }),
+        })
+        .then(function(resp){ return resp.json(); })
+        .then(function(data){
+          _fbShowSuccess();
+        })
+        .catch(function(){
+          // ── 2. Fallback: WhatsApp if backend unreachable ──
+          var wa = 'https://wa.me/916205846653?text='
+            + encodeURIComponent(
+                '📋 *New Website Feedback*\n'
+              + '⭐ Rating: ' + (rating ? rating + '/5' : 'Not rated') + '\n'
+              + '📌 Category: ' + (cat || 'General') + '\n'
+              + '👤 Name: ' + (name || 'Anonymous') + '\n'
+              + '📧 Email: ' + (email || 'Not provided') + '\n'
+              + '💬 Feedback:\n' + msg
+            );
           window.open(wa, '_blank');
-          form.style.display = 'none';
-          if(success){ success.hidden = false; }
+          _fbShowSuccess();
+        })
+        .finally(function(){
           submitBtn.disabled = false;
           submitBtn.classList.remove('loading');
-        }, 600);
+          submitBtn.querySelector('.fb-btn-text').textContent = 'Send My Feedback';
+        });
+
+        function _fbShowSuccess(){
+          form.style.display = 'none';
+          if(success){ success.hidden = false; }
+        }
       });
     }
 

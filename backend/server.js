@@ -283,6 +283,11 @@ function buildCustomerConfirmationEmailHTML(order) {
 const orderStore = new Map();
 
 /* ============================================================
+   IN-MEMORY FEEDBACK STORE
+   ============================================================ */
+const feedbackStore = new Map(); // feedbackId → feedback record
+
+/* ============================================================
    VALIDATION RULES
    ============================================================ */
 const orderValidationRules = [
@@ -318,6 +323,173 @@ app.get('/api/health', (_req, res) => {
     timestamp:  new Date().toISOString(),
     smtpConfigured: !!(process.env.SMTP_USER && (process.env.SMTP_APP_PASSWORD || process.env.SMTP_PASS)),
   });
+});
+
+/* ============================================================
+   FEEDBACK EMAIL BUILDER
+   ============================================================ */
+function buildFeedbackEmailHTML(fb) {
+  const { feedbackId, name, email, rating, category, message, receivedAt, ip } = fb;
+  const ratingEmojis = ['', '😞', '😕', '😐', '😊', '🤩'];
+  const ratingEmoji  = ratingEmojis[parseInt(rating) || 0] || '—';
+  const ratingStars  = rating ? '⭐'.repeat(parseInt(rating)) : '—';
+  const catLabels    = { product:'🌾 Product Quality', delivery:'🚚 Delivery', pricing:'💰 Pricing', website:'🌐 Website', other:'💬 Other' };
+  const date = new Date(receivedAt).toLocaleString('en-IN', {
+    day:'2-digit', month:'short', year:'numeric',
+    hour:'2-digit', minute:'2-digit', hour12:true, timeZone:'Asia/Kolkata'
+  });
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>New Feedback — ${feedbackId}</title></head>
+<body style="margin:0;padding:0;background:#F7F1E5;font-family:'Plus Jakarta Sans',Helvetica,Arial,sans-serif;">
+  <div style="max-width:580px;margin:32px auto;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(22,58,45,0.12);">
+
+    <!-- Header -->
+    <div style="background:linear-gradient(135deg,#163A2D,#235241);padding:28px 32px;text-align:center;">
+      <h1 style="margin:0;color:#C9A45C;font-family:Georgia,serif;font-size:20px;letter-spacing:0.03em;">
+        💬 New Customer Feedback
+      </h1>
+      <p style="margin:6px 0 0;color:rgba(247,241,229,0.75);font-size:12px;">NayaVayapar Website</p>
+    </div>
+
+    <!-- Feedback ID + Date -->
+    <div style="background:rgba(201,164,92,0.10);border-bottom:2px dashed rgba(201,164,92,0.3);padding:12px 32px;text-align:center;">
+      <span style="font-size:10px;color:#6B726B;letter-spacing:0.1em;text-transform:uppercase;">Feedback ID</span><br>
+      <strong style="font-size:16px;color:#163A2D;">${feedbackId}</strong>
+      <br><span style="font-size:11px;color:#9DA39D;">${date} IST</span>
+    </div>
+
+    <!-- Rating Block -->
+    <div style="padding:24px 32px 0;">
+      <div style="background:#F7F1E5;border-radius:12px;padding:18px 20px;text-align:center;margin-bottom:20px;">
+        <div style="font-size:40px;margin-bottom:6px;">${ratingEmoji}</div>
+        <div style="font-size:22px;">${ratingStars}</div>
+        <div style="font-size:13px;color:#163A2D;font-weight:700;margin-top:4px;">${rating ? rating + ' / 5' : 'No rating given'}</div>
+      </div>
+    </div>
+
+    <!-- Customer Details -->
+    <div style="padding:0 32px 24px;">
+      <h2 style="font-family:Georgia,serif;color:#163A2D;font-size:15px;margin:0 0 14px;border-bottom:1px solid #eee;padding-bottom:8px;">👤 Submitted By</h2>
+      <table style="width:100%;border-collapse:collapse;">
+        <tr><td style="padding:6px 0;color:#6B726B;font-size:13px;width:110px;">Name</td><td style="padding:6px 0;font-size:14px;font-weight:600;color:#163A2D;">${name || '<em style="color:#9DA39D">Anonymous</em>'}</td></tr>
+        <tr><td style="padding:6px 0;color:#6B726B;font-size:13px;">Email</td><td style="padding:6px 0;font-size:14px;">${email ? `<a href="mailto:${email}" style="color:#163A2D;">${email}</a>` : '<em style="color:#9DA39D">Not provided</em>'}</td></tr>
+        <tr><td style="padding:6px 0;color:#6B726B;font-size:13px;">Category</td><td style="padding:6px 0;font-size:14px;">${catLabels[category] || '💬 General'}</td></tr>
+        <tr><td style="padding:6px 0;color:#6B726B;font-size:13px;">IP</td><td style="padding:6px 0;font-size:12px;color:#9DA39D;">${ip || 'Unknown'}</td></tr>
+      </table>
+    </div>
+
+    <!-- Feedback Message -->
+    <div style="padding:0 32px 28px;">
+      <h2 style="font-family:Georgia,serif;color:#163A2D;font-size:15px;margin:0 0 12px;border-bottom:1px solid #eee;padding-bottom:8px;">💬 Their Message</h2>
+      <div style="background:#f9f9f7;border-left:4px solid #C9A45C;border-radius:0 10px 10px 0;padding:14px 16px;font-size:14px;color:#1a1a1a;line-height:1.65;white-space:pre-line;">${message}</div>
+    </div>
+
+    <!-- Footer -->
+    <div style="background:#163A2D;padding:16px 32px;text-align:center;">
+      <p style="margin:0;color:rgba(247,241,229,0.6);font-size:11px;">
+        NayaVayapar • From Farmers to Market • +91 62058 46653
+      </p>
+    </div>
+  </div>
+</body></html>`;
+}
+
+/* ============================================================
+   FEEDBACK RATE LIMITER
+   ============================================================ */
+const feedbackLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max:      5,               // max 5 feedbacks per IP per 15 min
+  standardHeaders: true,
+  legacyHeaders:   false,
+  message: { success: false, message: 'Too many feedback submissions. Please wait a few minutes.' },
+});
+
+/* POST /api/feedback ─────────────────────────────────────── */
+const feedbackValidationRules = [
+  body('name').optional({ checkFalsy: true }).trim().isLength({ max: 100 }).escape(),
+  body('email').optional({ checkFalsy: true }).isEmail().normalizeEmail(),
+  body('rating').optional({ checkFalsy: true }).isInt({ min: 1, max: 5 }),
+  body('category').optional({ checkFalsy: true }).isIn(['product','delivery','pricing','website','other','']),
+  body('message').trim().isLength({ min: 2, max: 500 }).escape(),
+];
+
+app.post('/api/feedback', feedbackLimiter, feedbackValidationRules, async (req, res) => {
+  // 1 — Validate
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({
+      success: false,
+      message: 'Validation failed.',
+      errors:  errors.array().map(e => ({ field: e.path, msg: e.msg })),
+    });
+  }
+
+  const { name, email, rating, category, message } = req.body;
+  const feedbackId = 'FB-' + Date.now() + '-' + Math.random().toString(36).slice(2,6).toUpperCase();
+  const ip = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.socket?.remoteAddress || 'Unknown';
+
+  const record = {
+    feedbackId,
+    name:     name || 'Anonymous',
+    email:    email || null,
+    rating:   rating || null,
+    category: category || 'other',
+    message,
+    ip,
+    receivedAt: new Date().toISOString(),
+    emailSent:  false,
+  };
+
+  feedbackStore.set(feedbackId, record);
+
+  // 2 — Send email notification to owner
+  let emailSent = false;
+  if (process.env.SMTP_USER && (process.env.SMTP_APP_PASSWORD || process.env.SMTP_PASS)) {
+    try {
+      const mailer = await getTransporter();
+      const businessEmail = process.env.BUSINESS_EMAIL || 'nayavayapar@gmail.com';
+
+      await mailer.sendMail({
+        from:    `"NayaVayapar Feedback" <${process.env.SMTP_USER}>`,
+        to:      businessEmail,
+        subject: `💬 New Feedback (${rating ? rating + '⭐' : 'No rating'}) — ${name || 'Anonymous'} | NayaVayapar`,
+        html:    buildFeedbackEmailHTML(record),
+        replyTo: email || undefined,
+      });
+
+      emailSent = true;
+      record.emailSent = true;
+      console.log(`[Feedback] ${feedbackId} — Email sent to ${businessEmail} ✓`);
+    } catch (err) {
+      console.error(`[Feedback] ${feedbackId} — Email failed:`, err.message);
+    }
+  } else {
+    console.warn('[Feedback] SMTP not configured — feedback saved to memory, no email sent.');
+    console.log('[Feedback]', JSON.stringify(record, null, 2));
+  }
+
+  return res.status(201).json({
+    success: true,
+    feedbackId,
+    emailSent,
+    message: 'Thank you for your feedback!',
+  });
+});
+
+/* GET /api/feedbacks — Admin view all feedbacks */
+app.get('/api/feedbacks', (req, res) => {
+  const adminKey = req.headers['x-admin-key'];
+  if (!adminKey || adminKey !== process.env.ADMIN_KEY) {
+    return res.status(403).json({ success: false, message: 'Forbidden' });
+  }
+  const feedbacks = Array.from(feedbackStore.values()).sort(
+    (a, b) => new Date(b.receivedAt) - new Date(a.receivedAt)
+  );
+  res.json({ success: true, count: feedbacks.length, feedbacks });
 });
 
 /* POST /api/bulk-order ─────────────────────────────────────── */
