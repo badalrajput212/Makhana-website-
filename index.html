@@ -2942,6 +2942,110 @@
   </main>
 
   <!-- ================================================== -->
+  <!-- FEEDBACK FORM SECTION                              -->
+  <!-- ================================================== -->
+  <section class="feedback-section" id="feedback" aria-label="Customer Feedback">
+    <div class="feedback-bg-deco" aria-hidden="true">
+      <span class="fb-deco-leaf fb-deco-leaf--1">🌿</span>
+      <span class="fb-deco-leaf fb-deco-leaf--2">✨</span>
+      <span class="fb-deco-leaf fb-deco-leaf--3">🌿</span>
+    </div>
+    <div class="container feedback-container">
+
+      <!-- Left: Copy -->
+      <div class="feedback-copy">
+        <span class="feedback-kicker">YOUR VOICE MATTERS</span>
+        <h2 class="feedback-heading">How Was Your<br><em>Experience?</em></h2>
+        <p class="feedback-subtext">Your honest feedback helps us grow better — every word counts. Takes just 30 seconds!</p>
+
+        <!-- Emoji Rating Picker -->
+        <div class="fb-emoji-row" role="group" aria-label="Rate your experience">
+          <label class="fb-emoji-opt">
+            <input type="radio" name="fbRating" value="1" class="fb-rating-input">
+            <span class="fb-emoji-face" title="Very Dissatisfied">😞</span>
+            <span class="fb-emoji-label">Poor</span>
+          </label>
+          <label class="fb-emoji-opt">
+            <input type="radio" name="fbRating" value="2" class="fb-rating-input">
+            <span class="fb-emoji-face" title="Dissatisfied">😕</span>
+            <span class="fb-emoji-label">Fair</span>
+          </label>
+          <label class="fb-emoji-opt">
+            <input type="radio" name="fbRating" value="3" class="fb-rating-input">
+            <span class="fb-emoji-face" title="Neutral">😐</span>
+            <span class="fb-emoji-label">Okay</span>
+          </label>
+          <label class="fb-emoji-opt">
+            <input type="radio" name="fbRating" value="4" class="fb-rating-input">
+            <span class="fb-emoji-face" title="Satisfied">😊</span>
+            <span class="fb-emoji-label">Good</span>
+          </label>
+          <label class="fb-emoji-opt">
+            <input type="radio" name="fbRating" value="5" class="fb-rating-input">
+            <span class="fb-emoji-face" title="Very Satisfied">🤩</span>
+            <span class="fb-emoji-label">Wow!</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Right: Form Card -->
+      <div class="feedback-card">
+        <div class="feedback-card-inner">
+          <form class="feedback-form" id="feedbackForm" novalidate>
+
+            <!-- Name + Email Row -->
+            <div class="fb-row">
+              <div class="fb-field">
+                <label class="fb-label" for="fbName">Your Name</label>
+                <input type="text" id="fbName" name="name" class="fb-input" placeholder="e.g. Priya Sharma" autocomplete="name" maxlength="80">
+              </div>
+              <div class="fb-field">
+                <label class="fb-label" for="fbEmail">Email (optional)</label>
+                <input type="email" id="fbEmail" name="email" class="fb-input" placeholder="yourname@email.com" autocomplete="email">
+              </div>
+            </div>
+
+            <!-- Category Tags -->
+            <div class="fb-field">
+              <label class="fb-label">What are you sharing about?</label>
+              <div class="fb-tag-row">
+                <label class="fb-tag"><input type="radio" name="fbCat" value="product"><span>🌾 Product Quality</span></label>
+                <label class="fb-tag"><input type="radio" name="fbCat" value="delivery"><span>🚚 Delivery</span></label>
+                <label class="fb-tag"><input type="radio" name="fbCat" value="pricing"><span>💰 Pricing</span></label>
+                <label class="fb-tag"><input type="radio" name="fbCat" value="website"><span>🌐 Website</span></label>
+                <label class="fb-tag"><input type="radio" name="fbCat" value="other"><span>💬 Other</span></label>
+              </div>
+            </div>
+
+            <!-- Message -->
+            <div class="fb-field">
+              <label class="fb-label" for="fbMsg">Your Feedback <span class="fb-required">*</span></label>
+              <textarea id="fbMsg" name="message" class="fb-textarea" placeholder="Tell us what you loved, what could be better, or anything on your mind..." rows="4" maxlength="500" required></textarea>
+              <span class="fb-char-count"><span id="fbCharLeft">500</span> chars left</span>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="fb-submit-btn" id="fbSubmitBtn">
+              <span class="fb-btn-text">Send My Feedback</span>
+              <svg class="fb-btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+
+          </form>
+
+          <!-- Success State -->
+          <div class="fb-success" id="fbSuccess" hidden>
+            <div class="fb-success-icon">🎉</div>
+            <h3 class="fb-success-title">Thank you so much!</h3>
+            <p class="fb-success-msg">Your feedback means the world to us. We read every single response and use it to make NayaVayapar better for you.</p>
+            <button class="fb-another-btn" id="fbAnotherBtn">Share Another Thought</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
   <!-- PREMIUM FOOTER                                     -->
   <!-- ================================================== -->
   <footer class="site-footer">
@@ -3223,6 +3327,91 @@
 
   <!-- Bulk Order Chatbot -->
   <script src="chatbot.js" defer></script>
+
+  <!-- Feedback Form Script -->
+  <script>
+  (function(){
+    const form   = document.getElementById('feedbackForm');
+    const success= document.getElementById('fbSuccess');
+    const anotherBtn = document.getElementById('fbAnotherBtn');
+    const msgArea    = document.getElementById('fbMsg');
+    const charLeft   = document.getElementById('fbCharLeft');
+    const submitBtn  = document.getElementById('fbSubmitBtn');
+
+    // Character counter
+    if(msgArea && charLeft){
+      msgArea.addEventListener('input', function(){
+        charLeft.textContent = 500 - this.value.length;
+      });
+    }
+
+    // Emoji rating visual select
+    document.querySelectorAll('.fb-rating-input').forEach(function(inp){
+      inp.addEventListener('change', function(){
+        document.querySelectorAll('.fb-emoji-opt').forEach(function(opt){ opt.classList.remove('selected'); });
+        if(this.checked) this.closest('.fb-emoji-opt').classList.add('selected');
+      });
+    });
+
+    // Category tag visual select
+    document.querySelectorAll('.fb-tag input[type=radio]').forEach(function(inp){
+      inp.addEventListener('change', function(){
+        document.querySelectorAll('.fb-tag').forEach(function(t){ t.classList.remove('active'); });
+        if(this.checked) this.closest('.fb-tag').classList.add('active');
+      });
+    });
+
+    // Form submit
+    if(form){
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        const msg = (msgArea ? msgArea.value : '').trim();
+        if(!msg){ msgArea.focus(); msgArea.style.borderColor='#DC2626'; return; }
+        msgArea.style.borderColor='';
+
+        // Get values
+        const rating = (document.querySelector('.fb-rating-input:checked') || {}).value || '';
+        const cat    = (document.querySelector('.fb-tag input:checked') || {}).value || '';
+        const name   = (document.getElementById('fbName') || {}).value || '';
+        const email  = (document.getElementById('fbEmail') || {}).value || '';
+
+        // Send to WhatsApp (fallback — no backend needed)
+        const wa = 'https://wa.me/916205846653?text='
+          + encodeURIComponent(
+              '📋 *New Website Feedback*\n'
+            + '⭐ Rating: ' + (rating ? rating + '/5' : 'Not rated') + '\n'
+            + '📌 Category: ' + (cat || 'General') + '\n'
+            + '👤 Name: ' + (name || 'Anonymous') + '\n'
+            + '📧 Email: ' + (email || 'Not provided') + '\n'
+            + '💬 Feedback:\n' + msg
+          );
+
+        // Animate button
+        submitBtn.disabled = true;
+        submitBtn.classList.add('loading');
+        setTimeout(function(){
+          window.open(wa, '_blank');
+          form.style.display = 'none';
+          if(success){ success.hidden = false; }
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('loading');
+        }, 600);
+      });
+    }
+
+    // Reset form
+    if(anotherBtn){
+      anotherBtn.addEventListener('click', function(){
+        if(success){ success.hidden = true; }
+        if(form){ form.reset(); form.style.display = ''; }
+        if(charLeft) charLeft.textContent = '500';
+        document.querySelectorAll('.fb-emoji-opt').forEach(function(o){ o.classList.remove('selected'); });
+        document.querySelectorAll('.fb-tag').forEach(function(t){ t.classList.remove('active'); });
+      });
+    }
+  })();
+  </script>
+
 </body>
 </html>
 
