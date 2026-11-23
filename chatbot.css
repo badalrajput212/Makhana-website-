@@ -848,6 +848,19 @@
   }
 }
 
+@media (max-width: 360px) {
+  .chatbot-trigger {
+    bottom: 16px;
+    right: 12px;
+    width: 46px;
+    height: 46px;
+  }
+  .chatbot-trigger-icon {
+    width: 22px;
+    height: 22px;
+  }
+}
+
 @media (min-width: 481px) and (max-width: 768px) {
   .chatbot-window {
     width: 380px;
@@ -968,6 +981,19 @@
   }
   .floating-wa-tooltip {
     display: none; /* Hide tooltip on mobile — too small */
+  }
+}
+
+@media (max-width: 360px) {
+  .floating-wa-btn {
+    width: 46px;
+    height: 46px;
+    bottom: 16px;
+    right: 70px;
+  }
+  .floating-wa-btn svg {
+    width: 22px;
+    height: 22px;
   }
 }
 

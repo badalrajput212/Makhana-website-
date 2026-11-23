@@ -1046,11 +1046,11 @@
 
   function initInfographicModals() {
     $('#viewInfographicBtn1')?.addEventListener('click', () => {
-      openInfographicModal('assets/benefits-blue.png');
+      openInfographicModal('assets/enjoyfit  Snack Bouquet.png');
     });
 
     $('#viewInfographicBtn2')?.addEventListener('click', () => {
-      openInfographicModal('assets/myths-facts.png');
+      openInfographicModal('assets/Premium Bhumiik Bouquet.png');
     });
 
     infographicClose?.addEventListener('click', closeInfographicModal);

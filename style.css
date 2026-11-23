@@ -79,6 +79,9 @@ html {
   scroll-behavior: smooth;
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
 }
 
 body {
@@ -89,9 +92,11 @@ body {
   line-height: 1.65;
   letter-spacing: -0.01em;
   overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
   position: relative;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-text-size-adjust: 100%;
 }
 
 body.drawer-locked {
@@ -844,12 +849,17 @@ h1, h2, h3, h4, .brand-title {
   padding: 80px 24px 40px;
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
+  box-sizing: border-box;
+  max-width: 100vw;
+  overflow-x: hidden;
   transition: opacity var(--transition-smooth), visibility var(--transition-smooth);
 }
 
 .search-overlay.open {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 
 .search-modal {
@@ -860,12 +870,54 @@ h1, h2, h3, h4, .brand-title {
   border-radius: var(--radius-lg);
   padding: 32px;
   box-shadow: var(--shadow-floating);
+  box-sizing: border-box;
   transform: translateY(-20px);
   transition: transform var(--transition-smooth);
 }
 
 .search-overlay.open .search-modal {
   transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  .search-overlay {
+    padding: 60px 14px 30px;
+  }
+  .search-modal {
+    padding: 20px 16px;
+    border-radius: 20px;
+    max-width: 100%;
+  }
+  .search-modal-header {
+    gap: 12px;
+  }
+  .search-input {
+    font-size: 15px;
+  }
+  .quick-tags {
+    gap: 6px;
+  }
+  .tag-pill {
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+}
+
+@media (max-width: 360px) {
+  .search-overlay {
+    padding: 48px 10px 24px;
+  }
+  .search-modal {
+    padding: 16px 12px;
+    border-radius: 16px;
+  }
+  .search-input {
+    font-size: 14px;
+  }
+  .search-close-btn {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 .search-modal-header {
@@ -4116,10 +4168,24 @@ h1, h2, h3, h4, .brand-title {
   }
 }
 
-/* 480px Screen (Mobile) */
+/* 480px Screen (Standard Mobile) */
 @media (max-width: 480px) {
+  .container {
+    padding-inline: 16px;
+  }
+  .nav-container {
+    padding-inline: 16px;
+  }
+  .brand-logo-img {
+    height: 40px;
+    max-width: 155px;
+  }
   .hero-heading {
-    font-size: 38px;
+    font-size: clamp(28px, 8vw, 38px);
+    line-height: 1.15;
+  }
+  .hero-subheading {
+    font-size: 14.5px;
   }
   .hero-stats {
     flex-direction: column;
@@ -4159,7 +4225,108 @@ h1, h2, h3, h4, .brand-title {
   .bulk-form-wrapper,
   .contact-form-card,
   .nutrition-widget {
-    padding: 28px 18px;
+    padding: 26px 16px;
+  }
+  .modal-card {
+    width: calc(100% - 24px);
+    margin: 0 12px;
+    border-radius: 20px;
+  }
+  .qv-content {
+    padding: 24px 18px;
+  }
+}
+
+/* 360px Screen (Ultra-Compact Mobile: iPhone SE 1st, Galaxy Fold, etc.) */
+@media (max-width: 360px) {
+  .container {
+    padding-inline: 12px;
+  }
+  .nav-container {
+    padding-inline: 10px;
+  }
+  .brand-logo-img {
+    height: 34px;
+    max-width: 125px;
+  }
+  .nav-actions {
+    gap: 5px;
+  }
+  .action-btn {
+    width: 36px;
+    height: 36px;
+  }
+  .mobile-toggle {
+    width: 36px;
+    height: 36px;
+  }
+  .hero-heading {
+    font-size: clamp(24px, 7.5vw, 30px);
+    line-height: 1.12;
+  }
+  .hero-subheading {
+    font-size: 13px;
+  }
+  .hero-image-card {
+    height: 300px;
+    border-radius: 24px;
+  }
+  .hero-orbit {
+    width: 300px;
+    height: 300px;
+  }
+  .hero-glow-1,
+  .hero-glow-2 {
+    display: none;
+  }
+  .floating-quote-capsule {
+    display: none;
+  }
+  .cat-filter-bar {
+    gap: 5px;
+    justify-content: center;
+  }
+  .cat-pill {
+    font-size: 10px;
+    padding: 6px 10px;
+  }
+  .cat-card-img-wrap {
+    height: 230px;
+  }
+  .cat-card-body {
+    padding: 14px 12px 16px;
+  }
+  .cat-card-name {
+    font-size: 16.5px;
+  }
+  .beq-sheet {
+    padding: 16px 12px 18px;
+    border-radius: 16px;
+    margin: 0 6px;
+    width: calc(100% - 12px);
+    max-width: calc(100% - 12px);
+  }
+  .modal-card {
+    width: calc(100% - 16px);
+    margin: 0 8px;
+    border-radius: 16px;
+  }
+  .qv-content {
+    padding: 18px 12px;
+  }
+  .qv-title {
+    font-size: 20px;
+  }
+  .recipe-modal-body {
+    padding: 18px 12px;
+  }
+  .checkout-modal-card {
+    padding: 20px 12px;
+  }
+  .bulk-form-wrapper,
+  .contact-form-card,
+  .nutrition-widget {
+    padding: 20px 12px;
   }
 }
 

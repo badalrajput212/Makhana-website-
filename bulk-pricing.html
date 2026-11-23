@@ -42,7 +42,12 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      max-width: 100vw;
+      width: 100%;
+    }
 
     body {
       font-family: var(--font-sans);
@@ -50,6 +55,8 @@
       color: var(--forest);
       min-height: 100vh;
       overflow-x: hidden;
+      max-width: 100vw;
+      width: 100%;
     }
 
     /* ===================================================
@@ -855,6 +862,9 @@
       padding: 28px 24px;
       border: 1.5px solid var(--border);
       margin-bottom: 32px;
+      max-width: 100%;
+      overflow: hidden;
+      box-sizing: border-box;
     }
     .suta-table-head {
       text-align: center;
@@ -874,9 +884,13 @@
     }
     .suta-table-wrap {
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       border-radius: 12px;
       background: var(--white);
       border: 1px solid var(--border);
+      max-width: 100%;
+      width: 100%;
+      box-sizing: border-box;
     }
     .suta-table {
       width: 100%;
@@ -918,6 +932,9 @@
       border-radius: 16px;
       padding: 24px 26px;
       border: 1px solid rgba(201,164,92,0.30);
+      max-width: 100%;
+      overflow: hidden;
+      box-sizing: border-box;
     }
     .sbt-header {
       display: flex;
@@ -1073,20 +1090,56 @@
       .map-panel { position: static; }
       .enquiry-strip { grid-template-columns: 1fr; }
       .grade-grid { grid-template-columns: repeat(3, 1fr); }
+      .suta-concept-banner { grid-template-columns: 1fr; gap: 20px; }
     }
     @media (max-width: 767px) {
-      .lp-nav { padding: 0 16px; }
-      .lp-main { padding: 36px 16px 60px; }
-      .lp-hero { padding: 48px 20px 56px; }
+      .lp-nav { padding: 0 14px; }
+      .lp-main { padding: 32px 14px 50px; }
+      .lp-hero { padding: 40px 16px 48px; }
       .grade-grid { grid-template-columns: 1fr; }
-      .enquiry-strip { padding: 28px 20px; gap: 24px; }
-      .map-panel { padding: 20px; }
+      .enquiry-strip { padding: 24px 16px; gap: 20px; }
+      .map-panel { padding: 18px 14px; }
       .nav-brand-text { display: none; }
+      .suta-concept-banner {
+        grid-template-columns: 1fr;
+        padding: 18px 16px;
+        gap: 16px;
+      }
+      .scb-formula-box {
+        padding: 14px 16px;
+      }
+      .suta-table-card {
+        padding: 20px 14px;
+        border-radius: 14px;
+      }
+      .sbt-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .suta-buyer-tip {
+        padding: 20px 16px;
+      }
     }
     @media (max-width: 480px) {
-      .ticker-item { padding: 0 14px; font-size: 11px; }
-      .price-card { padding: 14px 16px; }
+      .ticker-item { padding: 0 12px; font-size: 10.5px; }
+      .price-card { padding: 14px 14px; }
       .pc-price { font-size: 18px; }
+      .lp-hero-title { font-size: clamp(24px, 7vw, 32px); }
+      .lp-hero-desc { font-size: 13.5px; }
+      .scb-title { font-size: 17px; }
+      .scb-desc { font-size: 13px; }
+      .suta-table-title { font-size: 18px; }
+      .suta-table-subtitle { font-size: 12px; }
+      .scb-math-big { font-size: 18px; }
+      .scb-math-sub { font-size: 11.5px; }
+    }
+    @media (max-width: 360px) {
+      .lp-nav { padding: 0 10px; }
+      .back-btn { font-size: 11px; padding: 6px 10px; }
+      .wa-btn { font-size: 11px; padding: 7px 12px; }
+      .lp-hero { padding: 32px 12px 40px; }
+      .suta-concept-banner { padding: 14px 12px; }
+      .suta-table-card { padding: 16px 10px; }
     }
   </style>
 </head>
